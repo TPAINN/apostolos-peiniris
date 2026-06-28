@@ -678,12 +678,13 @@ footer{
 }
 
 /* CUSTOM SCROLLBAR */
-html{scrollbar-width:thin;scrollbar-color:rgba(184,115,51,.35) transparent}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(184,115,51,.15) 0%,rgba(184,115,51,.5) 40%,rgba(212,149,106,.6) 60%,rgba(184,115,51,.15) 100%);border-radius:100px}
-::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(184,115,51,.3) 0%,rgba(184,115,51,.7) 40%,rgba(212,149,106,.8) 60%,rgba(184,115,51,.3) 100%)}
-::-webkit-scrollbar-corner{background:transparent}
+html{scrollbar-width:none}
+::-webkit-scrollbar{display:none}
+#sbar{position:fixed;right:18px;top:50%;transform:translateY(-50%);width:1px;height:120px;z-index:9990;pointer-events:none}
+#strack{position:absolute;inset:0;background:rgba(184,115,51,.12);border-radius:99px}
+#sthumb{position:absolute;left:-1px;top:0;width:3px;background:linear-gradient(180deg,var(--cu2),var(--cu3));border-radius:99px;height:0%;box-shadow:0 0 8px rgba(184,115,51,.3);transition:height .05s linear}
+#spct{position:absolute;right:10px;bottom:-20px;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.1em;color:rgba(184,115,51,.45)}
+@media(max-width:768px){#sbar{display:none}}
 
 /* CONTACT GRID — balanced columns */
 .contact-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;align-items:center!important}
@@ -702,6 +703,7 @@ html{scrollbar-width:thin;scrollbar-color:rgba(184,115,51,.35) transparent}
     <li><a href="#contact" onclick="closeMenu()" class="t" data-en="Contact" data-gr="Επικοινωνία">Contact</a></li>
   </ul>
 </div>
+<div id="sbar"><div id="strack"></div><div id="sthumb"></div><div id="spct">0%</div></div>
 <!-- CURSOR -->
 <div id="c-ring"></div>
 <div id="prog"></div>
@@ -1240,5 +1242,28 @@ function dlPDF(){
     .catch(function(){window.open(url,'_blank');})
     .finally(function(){btn.disabled=false;btn.innerHTML=origHTML;});
 }</script>
+
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+<script>
+(function(){
+  var lenis = new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+  var sthumb=document.getElementById('sthumb');
+  var spct=document.getElementById('spct');
+  function update(e){
+    if(sthumb) sthumb.style.height=(e.progress*100)+'%';
+    if(spct) spct.textContent=Math.round(e.progress*100)+'%';
+  }
+  lenis.on('scroll',update);
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
+  requestAnimationFrame(raf);
+  // fix: lenis needs to know about existing scroll anchors
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var target=document.querySelector(a.getAttribute('href'));
+      if(target){e.preventDefault();lenis.scrollTo(target,{offset:-80,duration:1.2});}
+    });
+  });
+})();
+</script>
 </body>
 </html>
