@@ -648,10 +648,46 @@ footer{
   .ty{padding-bottom:4px}
   nav .nav-links{display:none}
 }
+
+/* HAMBURGER + MOBILE MENU */
+.nav-ham{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:40px;height:40px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s cubic-bezier(.22,1,.36,1)}
+.nav-ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+#mob-menu{
+  position:fixed;inset:0;background:var(--b0);z-index:999;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s cubic-bezier(.22,1,.36,1);
+}
+#mob-menu.open{opacity:1;pointer-events:all}
+#mob-menu ul{list-style:none;text-align:center;display:flex;flex-direction:column;gap:40px}
+#mob-menu ul li a{
+  font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;
+  color:var(--text);letter-spacing:.04em;text-decoration:none;
+  transition:color .2s;display:block;
+}
+#mob-menu ul li a:hover{color:var(--cu3)}
+@media(max-width:900px){
+  .nav-ham{display:flex}
+  @media(pointer:coarse){
+    *,*::before,*::after{cursor:auto!important}
+    #c-ring{display:none}
+  }
+}
 </style>
 </head>
 <body>
 
+<div id="mob-menu" aria-hidden="true">
+  <ul>
+    <li><a href="#skills" onclick="closeMenu()" class="t" data-en="Skills" data-gr="Δεξιότητες">Skills</a></li>
+    <li><a href="#projects" onclick="closeMenu()" class="t" data-en="Projects" data-gr="Έργα">Projects</a></li>
+    <li><a href="#certifications" onclick="closeMenu()" class="t" data-en="Certifications" data-gr="Πιστοποιητικά">Certifications</a></li>
+    <li><a href="#contact" onclick="closeMenu()" class="t" data-en="Contact" data-gr="Επικοινωνία">Contact</a></li>
+  </ul>
+</div>
 <!-- CURSOR -->
 <div id="c-ring"></div>
 <div id="prog"></div>
@@ -665,7 +701,7 @@ footer{
     <li><a href="#certifications" class="t" data-en="Certifications" data-gr="Πιστοποιητικά">Certifications</a></li>
     <li><a href="#contact" class="t" data-en="Contact" data-gr="Επικοινωνία">Contact</a></li>
   </ul>
-  <div class="nav-r">
+  <button class="nav-ham" id="navHam" aria-label="Menu" onclick="toggleMenu()"><span></span><span></span><span></span></button><div class="nav-r">
     <div class="ls" onclick="toggleLang()">
       <div class="ls-pill" id="lsp"></div>
       <div class="ls-o active" id="lso-en">EN</div>
@@ -1151,6 +1187,25 @@ document.addEventListener('click',e=>{
   if(!e.target.closest('.ccard'))
     document.querySelectorAll('.ccard').forEach(c=>c.classList.remove('preview-open'));
 });
+</script>
+
+<script>
+function toggleMenu(){
+  const ham=document.getElementById('navHam');
+  const menu=document.getElementById('mob-menu');
+  ham.classList.toggle('open');
+  menu.classList.toggle('open');
+  menu.setAttribute('aria-hidden', menu.classList.contains('open')?'false':'true');
+  document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+}
+function closeMenu(){
+  const ham=document.getElementById('navHam');
+  const menu=document.getElementById('mob-menu');
+  ham.classList.remove('open');
+  menu.classList.remove('open');
+  menu.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
 </script>
 </body>
 </html>
