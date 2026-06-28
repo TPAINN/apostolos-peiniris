@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "apostolos-peiniris",
   "builds": [
+    { "src": "favicon.png", "use": "@vercel/static" },
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "certificates/**", "use": "@vercel/static" }
   ],
@@ -10,16 +10,24 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/favicon.png",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
+        { "key": "Content-Type", "value": "image/png" }
       ]
     },
     {
       "source": "/certificates/(.*).pdf",
       "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
         { "key": "Content-Type", "value": "application/pdf" },
         { "key": "Content-Disposition", "value": "inline" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ]
