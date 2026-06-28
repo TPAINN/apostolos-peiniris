@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
@@ -264,7 +264,7 @@ nav.solid{
 }
 .hero-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--b2);padding:2px}
 .hero-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;transition:transform .5s}
-.hero-frame:hover .hero-inner img{transform:scale(1.06)}
+.hero-frame:hover .hero-inner img{transform:scale(1.06)}.hero-inner{position:relative}.hero-inner::after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 50% 45%,transparent 55%,rgba(5,4,2,.45) 100%);pointer-events:none}
 
 /* SCROLL INDICATOR */
 .scroll-ind{
@@ -277,7 +277,7 @@ nav.solid{
 @keyframes scrollPulse{0%,100%{opacity:.4;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.6)}}
 
 /* ── COMMON SECTIONS ─────────────────────────────────────────────────── */
-section{padding:100px 0}
+section{padding:72px 0}
 .ey{
   font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;
   color:var(--cu);letter-spacing:.18em;text-transform:uppercase;
@@ -543,14 +543,14 @@ section{padding:100px 0}
 .sc:hover .sc-ic{transform:scale(1.1)}
 .sc-nm{font-size:.68rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px}
 .sc-hd{font-size:.88rem;font-weight:700;color:var(--text)}
-.sc.gh:hover{background:rgba(27,31,36,.7);border-color:#484f58;box-shadow:0 12px 32px rgba(0,0,0,.4)}
-.sc.gh .sc-ic{background:#1B1F24;color:#fff}
-.sc.li:hover{background:rgba(10,102,194,.2);border-color:#0A66C2;box-shadow:0 12px 32px rgba(10,102,194,.25)}
-.sc.li .sc-ic{background:#0A66C2;color:#fff}
-.sc.ig:hover{background:rgba(220,39,67,.15);border-color:#e6683c;box-shadow:0 12px 32px rgba(220,39,67,.2)}
-.sc.ig .sc-ic{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#fff}
-.sc.fb:hover{background:rgba(24,119,242,.2);border-color:#1877F2;box-shadow:0 12px 32px rgba(24,119,242,.2)}
-.sc.fb .sc-ic{background:#1877F2;color:#fff}
+.sc.gh:hover{background:var(--cu4);border-color:var(--cu);box-shadow:var(--sh-cu)}
+.sc.gh .sc-ic{background:var(--b3);color:var(--cu3);border:1px solid var(--bdr2)}
+.sc.li:hover{background:var(--cu4);border-color:var(--cu);box-shadow:var(--sh-cu)}
+.sc.li .sc-ic{background:var(--b3);color:var(--cu3);border:1px solid var(--bdr2)}
+.sc.ig:hover{background:var(--cu4);border-color:var(--cu);box-shadow:var(--sh-cu)}
+.sc.ig .sc-ic{background:var(--b3);color:var(--cu3);border:1px solid var(--bdr2)}
+.sc.fb:hover{background:var(--cu4);border-color:var(--cu);box-shadow:var(--sh-cu)}
+.sc.fb .sc-ic{background:var(--b3);color:var(--cu3);border:1px solid var(--bdr2)}
 
 /* avail badge */
 .avail{
@@ -717,14 +717,14 @@ footer{
 <section id="skills">
 <div class="w">
   <div class="ey reveal t" data-en="Core Expertise" data-gr="Βασικές Δεξιότητες">Core Expertise</div>
-  <h2 class="sec-t reveal"><span class="t" data-en="What I know " data-gr="Τι ξέρω ">What I know </span><em class="t" data-en="best" data-gr="καλύτερα">best</em></h2>
+  <h2 class="sec-t reveal"><span class="t" data-en="My Tech " data-gr="Τεχνολογίες ">My Tech </span><em class="t" data-en="Stack" data-gr="μου">Stack</em></h2>
   <div class="core-grid">
     <div class="skill-card reveal"><span class="sk-icon">⚛️</span><div class="sk-name">React</div><div class="sk-desc t" data-en="React 19, Vite, Hooks, Context, PWA, Capacitor" data-gr="React 19, Vite, Hooks, Context, PWA, Capacitor">React 19, Vite, Hooks, Context, PWA, Capacitor</div></div>
     <div class="skill-card reveal"><span class="sk-icon">🐘</span><div class="sk-name">PostgreSQL</div><div class="sk-desc t" data-en="Relational DBs, queries, indexing, schema, JPA" data-gr="Σχεσιακές βάσεις, queries, indexing, JPA">Relational DBs, queries, indexing, schema, JPA</div></div>
     <div class="skill-card reveal"><span class="sk-icon">☕</span><div class="sk-name">Java</div><div class="sk-desc t" data-en="OOP, algorithms, data structures, design patterns" data-gr="OOP, αλγόριθμοι, δομές δεδομένων, design patterns">OOP, algorithms, data structures, design patterns</div></div>
     <div class="skill-card reveal"><span class="sk-icon">🎨</span><div class="sk-name">HTML / CSS</div><div class="sk-desc t" data-en="Semantic HTML5, CSS3, Flexbox, Grid, animations" data-gr="HTML5, CSS3, Flexbox, Grid, animations">Semantic HTML5, CSS3, Flexbox, Grid, animations</div></div>
     <div class="skill-card reveal"><span class="sk-icon">🍃</span><div class="sk-name">Spring Boot</div><div class="sk-desc t" data-en="REST APIs, Spring MVC, dependency injection, security" data-gr="REST APIs, Spring MVC, DI, security">REST APIs, Spring MVC, dependency injection, security</div></div>
-    <div class="skill-card reveal"><span class="sk-icon">🔗</span><div class="sk-name">Hibernate / JPA</div><div class="sk-desc t" data-en="ORM, entity mapping, transactions, lazy loading" data-gr="ORM, entity mapping, transactions, lazy loading">ORM, entity mapping, transactions, lazy loading</div></div>
+    <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="28" height="28"><ellipse cx="12" cy="12" rx="4" ry="7"/><path d="M12 5C9 2 4 3 3 7s2 7 5 8M12 19c3 3 8 2 9-2s-2-7-5-8"/></svg></span><div class="sk-name">Hibernate / JPA</div><div class="sk-desc t" data-en="ORM, entity mapping, transactions, lazy loading" data-gr="ORM, entity mapping, transactions, lazy loading">ORM, entity mapping, transactions, lazy loading</div></div>
   </div>
   <div class="add-lbl reveal t" data-en="Additional Stack" data-gr="Πρόσθετο Stack">Additional Stack</div>
   <div class="tags">
@@ -928,10 +928,10 @@ footer{
   <div class="contact-grid">
     <div>
       <div class="ey reveal t" data-en="Get in Touch" data-gr="Επικοινωνία">Get in Touch</div>
-      <h2 class="sec-t reveal" style="margin-bottom:24px"><span class="t" data-en="Let's work " data-gr="Ας ">Let's work </span><em class="t" data-en="together" data-gr="συνεργαστούμε">together</em></h2>
+      <h2 class="sec-t reveal" style="margin-bottom:24px"><span class="t" data-en="Let's " data-gr="Ας ">Let's </span><em class="t" data-en="Connect" data-gr="Μιλήσουμε">Connect</em></h2>
       <div class="avail reveal">
         <span class="dot"></span>
-        <span class="t" data-en="Available immediately" data-gr="Διαθέσιμος άμεσα">Available immediately</span>
+        <span class="t" data-en="Open to Work" data-gr="Αναζητώ θέση">Open to Work</span>
       </div>
       <div class="contact-info-stack reveal">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=apostolos.peiniris@gmail.com" target="_blank" rel="noopener" class="ci">
@@ -978,7 +978,7 @@ footer{
     <div class="ft-cu"></div>
     <span>&copy; 2026 Apostolos Peiniris</span>
   </div>
-  <span style="font-size:.7rem;letter-spacing:.06em" class="t" data-en="Full-Stack Developer · Built with ♥" data-gr="Full-Stack Developer · Φτιαγμένο με ♥">Full-Stack Developer · Built with ♥</span>
+  <span style="font-size:.7rem;letter-spacing:.06em" class="t" data-en="Full-Stack Developer" data-gr="Full-Stack Developer">Full-Stack Developer</span>
 </footer>
 
 <!-- CERT POPUP -->
