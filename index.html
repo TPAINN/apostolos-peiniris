@@ -676,6 +676,20 @@ footer{
     #c-ring{display:none}
   }
 }
+
+/* CUSTOM SCROLLBAR */
+html{scrollbar-width:thin;scrollbar-color:rgba(184,115,51,.35) transparent}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(184,115,51,.15) 0%,rgba(184,115,51,.5) 40%,rgba(212,149,106,.6) 60%,rgba(184,115,51,.15) 100%);border-radius:100px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,rgba(184,115,51,.3) 0%,rgba(184,115,51,.7) 40%,rgba(212,149,106,.8) 60%,rgba(184,115,51,.3) 100%)}
+::-webkit-scrollbar-corner{background:transparent}
+
+/* CONTACT GRID — balanced columns */
+.contact-grid{grid-template-columns:1fr 1fr!important;gap:48px!important;align-items:center!important}
+.contact-left{display:flex;flex-direction:column;gap:0}
+.soc-grid{grid-template-columns:1fr!important;gap:10px}
+.sc{border-radius:14px!important}
 </style>
 </head>
 <body>
