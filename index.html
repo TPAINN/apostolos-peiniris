@@ -1263,7 +1263,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',function(e){
     e.preventDefault();
     if(typeof closeMenu==='function')closeMenu();
-    smoothGo(this.getAttribute('href'));
+    const href=this.getAttribute('href');
+    // wait one frame so the menu's body overflow reset lands before scrolling,
+    // otherwise Chrome silently drops the smooth scroll
+    requestAnimationFrame(()=>{
+      if(window.__lenis){window.__lenis.scrollTo(href,{offset:-80,duration:1.2});}
+      else smoothGo(href);
+    });
   });
 });
 
@@ -1330,7 +1336,9 @@ function dlPDF(){
 <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 <script>
 (function(){
+  if(typeof Lenis==='undefined')return; // CDN blocked/offline — native smooth scroll takes over
   var lenis = new Lenis({duration:1.15,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+  window.__lenis=lenis; // single anchor-click handler above routes through this
   var sthumb=document.getElementById('sthumb');
   var spct=document.getElementById('spct');
   function update(e){
@@ -1340,13 +1348,6 @@ function dlPDF(){
   lenis.on('scroll',update);
   function raf(t){lenis.raf(t);requestAnimationFrame(raf)}
   requestAnimationFrame(raf);
-  // fix: lenis needs to know about existing scroll anchors
-  document.querySelectorAll('a[href^="#"]').forEach(function(a){
-    a.addEventListener('click',function(e){
-      var target=document.querySelector(a.getAttribute('href'));
-      if(target){e.preventDefault();if(typeof closeMenu==='function')closeMenu();lenis.scrollTo(target,{offset:-80,duration:1.2});}
-    });
-  });
 })();
 </script>
 </body>
