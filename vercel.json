@@ -3,7 +3,8 @@
   "builds": [
     { "src": "favicon.png", "use": "@vercel/static" },
     { "src": "index.html", "use": "@vercel/static" },
-    { "src": "certificates/**", "use": "@vercel/static" }
+    { "src": "certificates/**", "use": "@vercel/static" },
+    { "src": "cv/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/$1" }
@@ -20,6 +21,14 @@
       "source": "/certificates/(.*).pdf",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "attachment" }
+      ]
+    },
+    {
+      "source": "/cv/(.*).pdf",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" },
         { "key": "Content-Type", "value": "application/pdf" },
         { "key": "Content-Disposition", "value": "attachment" }
       ]
