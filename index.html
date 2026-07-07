@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
@@ -754,6 +754,9 @@ html{scrollbar-width:none}
     .hero-ctas > * { flex: 1 1 44%; min-width: 132px; }
     .w { padding-left: 18px; padding-right: 18px; box-sizing: border-box; }
     img, video { max-width: 100%; height: auto; }
+    /* v1.2: hero eyebrow centered on phones, symmetric dashes */
+    .hero-eyebrow { justify-content: center; text-align: center; }
+    .hero-eyebrow::after { content: ''; width: 32px; height: 1px; background: var(--cu); }
   }
 </style>
 </head>
