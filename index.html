@@ -1224,7 +1224,15 @@ function cpGo(idx){
 }
 function openCP(idx){
   document.getElementById('cpop').classList.add('open');
+  // Full scroll lock: Lenis ignores body overflow, and iOS ignores it too —
+  // stop Lenis and freeze the body in place.
+  window.__cpY=window.pageYOffset;
+  if(window.__lenis&&window.__lenis.stop)window.__lenis.stop();
+  document.documentElement.style.overflow='hidden';
   document.body.style.overflow='hidden';
+  document.body.style.position='fixed';
+  document.body.style.top=(-window.__cpY)+'px';
+  document.body.style.left='0';document.body.style.right='0';
   const img=document.getElementById('cimg');
   img.style.transition='none';img.style.opacity='0';
   setTimeout(()=>{img.style.transition='opacity .25s';},10);
@@ -1253,7 +1261,12 @@ function openCP(idx){
 function closeCP(){
   document.getElementById('cpop').classList.remove('open');
   document.getElementById('cpwrap').classList.remove('z');
+  document.documentElement.style.overflow='';
   document.body.style.overflow='';
+  document.body.style.position='';document.body.style.top='';
+  document.body.style.left='';document.body.style.right='';
+  window.scrollTo(0,window.__cpY||0);
+  if(window.__lenis&&window.__lenis.start)window.__lenis.start();
 }
 function cpNav(d){const n=ci+d;if(n>=0&&n<CI.length)cpGo(n);}
 function toggleZ(){document.querySelector('.cwrap').classList.toggle('z');}
@@ -1282,8 +1295,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     // wait one frame so the menu's body overflow reset lands before scrolling,
     // otherwise Chrome silently drops the smooth scroll
     requestAnimationFrame(()=>{
-      if(window.__lenis){window.__lenis.scrollTo(href,{offset:-80,duration:1.2});}
-      else smoothGo(href);
+      const delay=this.closest('#mob-menu')?300:0;setTimeout(()=>{if(window.__lenis){if(window.__lenis.start)window.__lenis.start();window.__lenis.scrollTo(href,{offset:-80,duration:1.1});}
+      else smoothGo(href);},delay);
     });
   });
 });
