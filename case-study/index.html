@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Case Study: Smart Grocery Hub (Καλαθάκι) — Apostolos Peiniris</title>
+<meta name="description" content="How I built Καλαθάκι — a full-stack PWA + Android app comparing live prices across 8 Greek supermarkets: scrapers, real-time shared carts, AI meal planning, Stripe.">
+<link rel="icon" href="/favicon.png" type="image/png">
+<link rel="canonical" href="https://apostolos-peiniris.vercel.app/case-study/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Case Study: Smart Grocery Hub — Apostolos Peiniris">
+<meta property="og:description" content="Full-stack PWA + Android price comparison across 8 Greek supermarkets — scrapers, real-time carts, AI meal planner, Stripe.">
+<meta property="og:url" content="https://apostolos-peiniris.vercel.app/case-study/">
+<meta property="og:image" content="https://apostolos-peiniris.vercel.app/og.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --b0:#050402;--b1:#0A0806;--b2:#12100B;--b3:#1C1610;
+  --cu:#B87333;--cu2:#D4956A;--cu3:#E8C99A;--cu4:rgba(184,115,51,.08);--cu5:rgba(184,115,51,.15);
+  --text:#EDE4D8;--text2:#9A8878;--text3:#5C4C3C;
+  --bdr:rgba(184,115,51,.14);--bdr2:rgba(184,115,51,.28);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--b0);color:var(--text);font-family:Montserrat,sans-serif;font-weight:300;line-height:1.75;font-size:16px}
+a{color:var(--cu2);text-decoration:none}
+a:hover{color:var(--cu3)}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+header{padding:36px 0 0}
+.back{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:var(--text2)}
+.back:hover{color:var(--cu2)}
+.hero{padding:56px 0 40px;border-bottom:1px solid var(--bdr)}
+.kicker{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:5px;color:var(--cu);text-transform:uppercase}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(38px,6vw,64px);line-height:1.08;margin:16px 0 10px}
+h1 em{font-style:italic;color:var(--cu2)}
+.sub{color:var(--text2);font-size:17px;max-width:640px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cu2);background:var(--cu4);border:1px solid var(--bdr);border-radius:999px;padding:5px 14px}
+.cta{display:inline-block;margin-top:28px;font-weight:500;font-size:14px;letter-spacing:.5px;color:var(--b0);background:linear-gradient(120deg,var(--cu),var(--cu2));padding:12px 26px;border-radius:6px}
+.cta:hover{color:var(--b0);filter:brightness(1.1)}
+section{padding:46px 0;border-bottom:1px solid var(--bdr)}
+h2{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:32px;margin-bottom:18px}
+h2 .n{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--cu);vertical-align:top;margin-right:10px}
+p{color:var(--text2);margin-bottom:14px;max-width:720px}
+p strong{color:var(--text);font-weight:500}
+.shots{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:34px 0 6px}
+.shots img{width:200px;border-radius:18px;border:1px solid var(--bdr2);box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:22px}
+.card{background:var(--b1);border:1px solid var(--bdr);border-radius:10px;padding:20px 22px}
+.card h3{font-size:14px;font-weight:600;letter-spacing:.6px;color:var(--cu3);margin-bottom:8px}
+.card p{font-size:14px;margin:0}
+ul.feat{list-style:none;columns:2;column-gap:36px;margin-top:8px;max-width:720px}
+ul.feat li{color:var(--text2);font-size:14.5px;padding:5px 0;break-inside:avoid}
+ul.feat li::before{content:"—";color:var(--cu);margin-right:10px}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.stk{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);border:1px solid var(--bdr);border-radius:4px;padding:4px 10px}
+footer{padding:48px 0 60px;text-align:center}
+footer p{max-width:none}
+@media(max-width:640px){ul.feat{columns:1}.shots img{width:44%}}
+</style>
+</head>
+<body>
+<header class="wrap"><a class="back" href="/">← apostolos-peiniris.vercel.app</a></header>
+
+<div class="wrap hero">
+  <div class="kicker">Case Study</div>
+  <h1>Smart Grocery Hub <em>(Καλαθάκι)</em></h1>
+  <p class="sub">A full-stack PWA and Android app that compares live prices across 8 Greek supermarket chains — with an AI meal planner, barcode scanning, real-time shared carts and Stripe subscriptions.</p>
+  <div class="meta">
+    <span class="chip">Solo project</span>
+    <span class="chip">PWA + Android</span>
+    <span class="chip">Full-stack</span>
+    <span class="chip">In production</span>
+  </div>
+  <a class="cta" href="https://kalathaki.vercel.app" target="_blank" rel="noopener">Open the live app ↗</a>
+</div>
+
+<section class="wrap">
+  <h2><span class="n">01</span>The problem</h2>
+  <p>Grocery prices in Greece vary noticeably between chains, and shoppers have no practical way to compare them: each supermarket publishes prices only inside its own site or leaflet, in different formats, with different product names for the same item. Checking even a 10-item list across Lidl, ΑΒ, Σκλαβενίτης, MyMarket, Μασούτης, Κρητικός, Γαλαξίας and Market In means opening eight websites.</p>
+  <p><strong>Καλαθάκι turns that into one search box</strong> — type a product, see the live price everywhere, build a list, and let the app tell you where your basket is cheapest.</p>
+</section>
+
+<section class="wrap">
+  <h2><span class="n">02</span>What it does</h2>
+  <ul class="feat">
+    <li>Live price comparison across 8 chains</li>
+    <li>Smart shopping list with budget tracking</li>
+    <li>AI weekly meal planner (body + budget aware)</li>
+    <li>Meal Macros — photo → calories &amp; macros</li>
+    <li>Barcode scanner with Nutri-Score &amp; allergens</li>
+    <li>Real-time shared carts with friends</li>
+    <li>Optimal store route on a map (OSRM)</li>
+    <li>Current leaflets &amp; offers per chain</li>
+    <li>Light/dark theming, offline-first PWA</li>
+    <li>Native Android build via Capacitor</li>
+    <li>Premium subscriptions with Stripe Checkout</li>
+  </ul>
+  <div class="shots">
+    <img src="home-light.jpeg" alt="Καλαθάκι home — light theme">
+    <img src="home-dark.jpeg" alt="Καλαθάκι home — dark theme">
+    <img src="meal-macros.jpeg" alt="Meal Macros AI scanner">
+  </div>
+</section>
+
+<section class="wrap">
+  <h2><span class="n">03</span>Architecture</h2>
+  <div class="grid">
+    <div class="card"><h3>FRONTEND</h3><p>React 19 + Vite SPA with code splitting, Workbox service worker for offline caching and auto-update, Framer Motion micro-interactions, packaged for Android with Capacitor.</p></div>
+    <div class="card"><h3>BACKEND</h3><p>Express + MongoDB API. Puppeteer scrapers keep prices fresh per chain; AI providers power the meal planner and photo macro analysis.</p></div>
+    <div class="card"><h3>REAL-TIME</h3><p>Socket.IO channels for shared carts and chat — edits from any member appear instantly on everyone's list.</p></div>
+    <div class="card"><h3>MAPS &amp; PAYMENTS</h3><p>Leaflet + OSRM + Overpass for nearby stores and optimal routes with zero Google fees; Stripe Checkout for Premium with a 14-day free trial.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2><span class="n">04</span>Hard problems</h2>
+  <p><strong>Scraping 8 different storefronts, reliably.</strong> Every chain has its own markup, pagination and bot detection. The scrapers run on Puppeteer with anti-bot countermeasures and are monitored so that a silent HTML change in one store doesn't quietly corrupt prices.</p>
+  <p><strong>Matching the same product across chains.</strong> "Γάλα 3.5% 1L" is spelled eight different ways. Matching combines normalized names, package sizes and barcodes so the comparison is honest — a wrong match is worse than no match.</p>
+  <p><strong>Real-time collaboration that survives mobile networks.</strong> Shared carts must reconcile edits from multiple phones on flaky connections; Socket.IO events are idempotent and the list state re-syncs on every reconnect.</p>
+  <p><strong>Keeping the free tier free.</strong> Maps use OSRM/Overpass instead of paid APIs, hosting fits Vercel + Render free plans, and Premium (Stripe) covers what actually costs money — the AI features.</p>
+</section>
+
+<section class="wrap">
+  <h2><span class="n">05</span>Stack</h2>
+  <div class="stack">
+    <span class="stk">React 19</span><span class="stk">Vite</span><span class="stk">Capacitor</span><span class="stk">Workbox PWA</span><span class="stk">Framer Motion</span><span class="stk">Express 5</span><span class="stk">MongoDB</span><span class="stk">Puppeteer</span><span class="stk">Socket.IO</span><span class="stk">Stripe</span><span class="stk">Leaflet</span><span class="stk">OSRM</span><span class="stk">Claude AI</span>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><a class="cta" href="https://kalathaki.vercel.app" target="_blank" rel="noopener">Try Καλαθάκι live ↗</a></p>
+  <p style="margin-top:18px"><a href="/">← Back to portfolio</a> · <a href="mailto:apostolos.peiniris@gmail.com">apostolos.peiniris@gmail.com</a></p>
+</footer>
+</body>
+</html>
