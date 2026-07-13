@@ -314,6 +314,7 @@ section{padding:72px 0}
   transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
 }
 .p-icon img{width:28px;height:28px;object-fit:contain;border-radius:6px}
+.p-icon svg{width:26px;height:26px;color:var(--cu3)}
 .pcard:hover .p-icon{
   transform:scale(1.08) rotate(-3deg);
   border-color:rgba(184,115,51,.35);
@@ -360,12 +361,12 @@ section{padding:72px 0}
 }
 .ct img{
   width:100%;height:100%;object-fit:cover;object-position:top;
-  transform:scale(1.05);filter:brightness(.5) saturate(.75);
+  transform:scale(1.08);filter:brightness(.5) saturate(.75) blur(9px);
   transition:transform .6s cubic-bezier(.22,1,.36,1),filter .5s cubic-bezier(.22,1,.36,1);
 }
-.ccard.preview-open .ct img,.ccard:focus .ct img{transform:scale(1.12);filter:brightness(.88) saturate(1)}
+.ccard.preview-open .ct img,.ccard:focus .ct img{transform:scale(1.12);filter:brightness(.88) saturate(1) blur(0px)}
 @media(hover:hover){
-  .ccard:hover .ct img{transform:scale(1.12);filter:brightness(.88) saturate(1)}
+  .ccard:hover .ct img{transform:scale(1.12);filter:brightness(.88) saturate(1) blur(0px)}
 }
 .ct-ov{
   position:absolute;inset:0;
@@ -798,12 +799,12 @@ html{scrollbar-width:none}
 <div class="w">
   <h2 class="sec-t reveal"><span class="t" data-en="My Tech ">My Tech </span><em class="t" data-en="Stack">Stack</em></h2>
   <div class="core-grid">
-    <div class="skill-card reveal"><span class="sk-icon">⚛️</span><div class="sk-name">React</div><div class="sk-desc t" data-en="React 19, Vite, Hooks, Context, PWA, Capacitor">React 19, Vite, Hooks, Context, PWA, Capacitor</div></div>
+    <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="27" height="27"><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.5" ry="3.8" transform="rotate(120 12 12)"/></svg></span><div class="sk-name">React</div><div class="sk-desc t" data-en="React 19, Vite, Hooks, Context, PWA, Capacitor">React 19, Vite, Hooks, Context, PWA, Capacitor</div></div>
     <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 15.5c.5 1 1.2 1.5 2 1.5 1.2 0 1.8-.7 1.8-1.8V9"/><path d="M14 15.2c.4.9 1.2 1.5 2.2 1.5 1.3 0 2-.7 2-1.6 0-1-.7-1.4-2-2l-.4-.15c-1.2-.5-1.8-1.1-1.8-2.15 0-1 .8-1.7 2-1.7.9 0 1.5.3 2 1"/></svg></span><div class="sk-name">JavaScript</div><div class="sk-desc t" data-en="ES2023, async/await, DOM APIs, modules">ES2023, async/await, DOM APIs, modules</div></div>
-    <div class="skill-card reveal"><span class="sk-icon">🐘</span><div class="sk-name">PostgreSQL</div><div class="sk-desc t" data-en="Relational DBs, queries, indexing, schema, JPA">Relational DBs, queries, indexing, schema, JPA</div></div>
-    <div class="skill-card reveal"><span class="sk-icon">☕</span><div class="sk-name">Java</div><div class="sk-desc t" data-en="OOP, algorithms, data structures, design patterns">OOP, algorithms, data structures, design patterns</div></div>
-    <div class="skill-card reveal"><span class="sk-icon">🎨</span><div class="sk-name">HTML / CSS</div><div class="sk-desc t" data-en="Semantic HTML5, CSS3, Flexbox, Grid, animations">Semantic HTML5, CSS3, Flexbox, Grid, animations</div></div>
-    <div class="skill-card reveal"><span class="sk-icon">🍃</span><div class="sk-name">Spring Boot</div><div class="sk-desc t" data-en="REST APIs, Spring MVC, dependency injection, security">REST APIs, Spring MVC, dependency injection, security</div></div>
+    <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><div class="sk-name">PostgreSQL</div><div class="sk-desc t" data-en="Relational DBs, queries, indexing, schema, JPA">Relational DBs, queries, indexing, schema, JPA</div></div>
+    <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26"><path d="M6 9h11v6a4 4 0 0 1-4 4h-3a4 4 0 0 1-4-4V9z"/><path d="M17 10.5h1.2a2.3 2.3 0 0 1 0 4.6H17"/><path d="M9 3c-.6.8-.6 1.2 0 2M13 3c-.6.8-.6 1.2 0 2"/></svg></span><div class="sk-name">Java</div><div class="sk-desc t" data-en="OOP, algorithms, data structures, design patterns">OOP, algorithms, data structures, design patterns</div></div>
+    <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26"><path d="M9 4 4 12l5 8"/><path d="M15 4l5 8-5 8"/></svg></span><div class="sk-name">HTML / CSS</div><div class="sk-desc t" data-en="Semantic HTML5, CSS3, Flexbox, Grid, animations">Semantic HTML5, CSS3, Flexbox, Grid, animations</div></div>
+    <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="26" height="26"><path d="M19 5C10 4 4 10 4 18c0 .7 1.3 1 2 1 8 0 14-6 15-15 0-.7-.3-1-2-1z"/><path d="M6 18c3-5 7-9 12-11.5"/></svg></span><div class="sk-name">Spring Boot</div><div class="sk-desc t" data-en="REST APIs, Spring MVC, dependency injection, security">REST APIs, Spring MVC, dependency injection, security</div></div>
     <div class="skill-card reveal"><span class="sk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="28" height="28"><ellipse cx="12" cy="12" rx="4" ry="7"/><path d="M12 5C9 2 4 3 3 7s2 7 5 8M12 19c3 3 8 2 9-2s-2-7-5-8"/></svg></span><div class="sk-name">Hibernate / JPA</div><div class="sk-desc t" data-en="ORM, entity mapping, transactions, lazy loading">ORM, entity mapping, transactions, lazy loading</div></div>
   </div>
 </div>
@@ -827,7 +828,7 @@ html{scrollbar-width:none}
       <div class="p-links"><a class="pl" href="https://kalathaki.vercel.app" target="_blank">Live Demo </a><a class="pl" href="https://github.com/TPAINN/smart-grocery-frontend" target="_blank">Frontend <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a><a class="pl" href="https://github.com/TPAINN/smart-grocery-backend" target="_blank">Backend <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
     </div>
     <div class="pcard span4 reveal">
-      <div class="p-em">🔔</div>
+      <div class="p-icon"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMTIiIGZpbGw9IiMxYjFiMmYiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNTYgMjQ4KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZiNzRkIiBzdHJva2Utd2lkdGg9IjI2IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPgogICAgPHBhdGggZD0iTS05NiA2NCBDLTk2IC00MCAtNjQgLTEwNCAwIC0xMDQgQzY0IC0xMDQgOTYgLTQwIDk2IDY0IEwxMjAgNjQgTC0xMjAgNjQgWiIgZmlsbD0iI2ZmYjc0ZCIgc3Ryb2tlPSJub25lIi8+CiAgICA8cGF0aCBkPSJNLTMwIDk2IGEzMCAzMCAwIDAgMCA2MCAwIiBmaWxsPSIjZmZiNzRkIiBzdHJva2U9Im5vbmUiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iLTEwNCIgeDI9IjAiIHkyPSItMTMyIiBzdHJva2Utd2lkdGg9IjIyIi8+CiAgICA8Y2lyY2xlIGN4PSIwIiBjeT0iLTE0MCIgcj0iMTYiIGZpbGw9IiNmZmI3NGQiIHN0cm9rZT0ibm9uZSIvPgogIDwvZz4KPC9zdmc+Cg==" alt="" loading="lazy"></div>
       <div class="p-name"><a href="https://github.com/TPAINN/ringvault" target="_blank">RingVault</a></div>
       <p class="p-desc t"
          data-en="Native Android app (Kotlin + Jetpack Compose) for free ringtones. Automated weekly CC0/CC-BY audio ingestion pipeline."
@@ -838,7 +839,7 @@ html{scrollbar-width:none}
       <div class="p-links"><a class="pl" href="https://ringvault.vercel.app" target="_blank">Live App </a><a class="pl" href="https://github.com/TPAINN/ringvault" target="_blank">View Repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
     </div>
     <div class="pcard span6 reveal">
-      <div class="p-em">🧠</div>
+      <div class="p-icon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAADsOAAA7DgHMtqGDAAAFaUlEQVRogdWY+U9UVxTH5+9imBnXwTZRrG2Tqo1tf/HX2sYfTEwVl7a2WFsVxbYuiFQWBRUFERdEEAcELMtQO1oxKovgu/e9edus79ucO0CsZJY3TH94k5xkEvjh8zlz7jnnXtc3RRJ2FUnYXSShrEjCHreEvW4J+9wS9rslfOuW8J1bwvduCQfcEn4olvBjsYTyuThYLOGnYgmHiiX8XCzhF4+Ewx4JRzwSjnokVHgYjnkYjnsYKj0MJ7wMv3oZfvMy/O5lOOllOOVlOO1lOONlqPIxnPUxVPsYzvkYanwMf/gYzvsYan0MdcsY6pcxNMyFy8nwF0jAyfAXScDJ8I0k4GT4JhJwMvyl5QwuJ8NfJgEnw18hASfDN5OAk+GvkoCT4a+RgJPhW0igUPDnSjk69mt4eMIQcbdMQ12pjPr1Mjr3aBioNER07dXQuJ4XBL6VBJYKX7NBxpObUSTjgJUErEQqkhTxtyIGJOYibgLP2qK48qG8JPjrKxhcS4Fv+EyBNpsU4Np0EiP1EXSX6+gp1xFsiCyAB+siCBzUESjXMVYXgTqZRDwCqFNJXN+i5A3fNi+QD/wpP4cykRTZHmuK4KyfL6r5+Yy/W/MXSjhCjRHxSyjPk7i0hucFf4ME8q35/tOmgH96M5r2wCaiEJHuwI63RxEzgJGTZl7w7SSQD3z12lT2Ca52g5y229DfKcvpDuzVj2RENUAZT+LaOm4b/iYJ2IVv3a4iErZEfU/0xTO2SoKnyNRtJnriQkKftdC9XbUFf4sE7MDXb1bET06ZHT5vorZUztjn5wUytcprpRyPa0xEwoDJgFublZzhb5OAnSEVao2KrtJbYeQ0pAiehHNplcNHDCEx3hzNGf4OCdiZsOGpJKI6UO3nWeEb/Dx1iCNAYwnP2ipbSjgMKXUecoXvWMngsrMemLIFbcbKCZ4/TWD+w58k0OTP3irVVxbUaStn+LskYGe3mRlNiAHU9KmScbe5X6bBsoCKLTKOfS6L74EyLSN8xxYFpgzMDCRyhu8kATuLWeCwIQQm++M4v4anXcx65gQI/vgXyoJAOvi29zimH8SFwMghPWf4eyRgZ6usXsUw9SguDudQlZl2q6Sap7JZKKFQAlf86fv832dMmBx43RtHuz93+K6VHC67K3GoOTU97+3WMq7EVPP0fxSZ4FuWMwzs1mAwYLwpagu+mwTs7vPTg3HEdODiuuwrsUm9XUHWCXvrAy4EXgfituDvk4Ddy8hkX2pyXv5YzrrPEzxFtvXg7ieyaKGTXXFb8D0kYPcmNVpjCoGBo0bWywgdSops60HwiAH9DfCkyrQF/2AVh8vuNbB5oyxGvvHGwp1tasYJKwQ4MsL3blOhTlL/B+5vkm3BB0ggnztsX7me2l0U4OW9GIJVJjq/Uhf1eYKn2n4XPvC1itAZExMdMWizgD4DjB7QbcP3kkC+F/CuHSpYKJmqcxliQjev+W+3IXiKt+Hb3+cIT1iiZPRZQBpLYnCHmhe8EFjK68FF6iBbw3h+IyayPVRhLNptKNpK+ELZBCsMAf6iJYYHW8O4vZLlDd9HAoV4+mjbKCM8aQnYUF0Efbs0vOyIQZcgMv3qdgz9uzT8UxsR5aK8sNC1SbZ9YN+Ff0gChXq36d6mQnmekpgHfz2YwMxgQmScgupdfmah70u1IPD9JFDIR6fWtRwD+3UEK0083Kmhzc9xo4Sjf6eGsUoTQ/t0dKzjBYMfIIH/68XMzkrcmSf84GoOl5PhH5GAk+H/JAEnww+RgJPhh0nAyfAjJOBk+FESeBv+gl34FXbhuT341ZnhgyTg1MwHV3OM+TlcTob/iwScWDbz8I/9HP8CgmFccSSDgNEAAAAASUVORK5CYII=" alt="" loading="lazy"></div>
       <div class="p-name"><a href="https://github.com/TPAINN/mindfeed" target="_blank">MindFeed</a></div>
       <p class="p-desc t"
          data-en="Anti-doom-scroll PWA delivering science-backed daily knowledge cards to replace mindless scrolling."
@@ -849,7 +850,7 @@ html{scrollbar-width:none}
       <div class="p-links"><a class="pl" href="https://mindfeed-tpainn.vercel.app" target="_blank">Live App </a><a class="pl" href="https://github.com/TPAINN/mindfeed" target="_blank">View Repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
     </div>
     <div class="pcard span6 reveal">
-      <div class="p-em">🎵</div>
+      <div class="p-icon"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2cnIHgxPScwJyB5MT0nMCcgeDI9JzEnIHkyPScxJz48c3RvcCBvZmZzZXQ9JzAnIHN0b3AtY29sb3I9JyNhNzhiZmEnLz48c3RvcCBvZmZzZXQ9Jy41JyBzdG9wLWNvbG9yPScjZjQ3MmI2Jy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLWNvbG9yPScjNjdlOGY5Jy8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9JzEwMCcgaGVpZ2h0PScxMDAnIHJ4PScyMCcgZmlsbD0nIzAzMDQwOCcvPjx0ZXh0IHk9JzcyJyB4PSc1MCcgdGV4dC1hbmNob3I9J21pZGRsZScgZm9udC1zaXplPSc2MCcgZmlsbD0ndXJsKCNnKSc+JiM5ODM1OzwvdGV4dD48L3N2Zz4=" alt="" loading="lazy"></div>
       <div class="p-name"><a href="https://github.com/TPAINN/aurora-player" target="_blank">Aurora Player</a></div>
       <p class="p-desc t"
          data-en="Premium web music player with word-level synchronized karaoke, beat-reactive visuals, and YouTube integration."
@@ -861,7 +862,7 @@ html{scrollbar-width:none}
     </div>
 
     <div class="pcard span6 reveal">
-      <div class="p-em">🌤️</div>
+      <div class="p-icon"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFhMWEyZSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwYTBhMGYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNsb3VkR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZTBlN2ZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2E1YjRmYyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic3VuR3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmYmJmMjQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjU5ZTBiIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnbG93R3JhZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM2MzY2ZjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOGI1Y2Y2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0iZ2xvdyIgeD0iLTUwJSIgeT0iLTUwJSIgd2lkdGg9IjIwMCUiIGhlaWdodD0iMjAwJSI+CiAgICAgIDxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjIiIHJlc3VsdD0iYmx1ciIvPgogICAgICA8ZmVNZXJnZT4KICAgICAgICA8ZmVNZXJnZU5vZGUgaW49ImJsdXIiLz4KICAgICAgICA8ZmVNZXJnZU5vZGUgaW49IlNvdXJjZUdyYXBoaWMiLz4KICAgICAgPC9mZU1lcmdlPgogICAgPC9maWx0ZXI+CiAgICA8ZmlsdGVyIGlkPSJzaGFkb3ciIHg9Ii01MCUiIHk9Ii01MCUiIHdpZHRoPSIyMDAlIiBoZWlnaHQ9IjIwMCUiPgogICAgICA8ZmVEcm9wU2hhZG93IGR4PSIwIiBkeT0iNCIgc3RkRGV2aWF0aW9uPSIzIiBmbG9vZC1jb2xvcj0iIzAwMCIgZmxvb2Qtb3BhY2l0eT0iMC4zIi8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjMwIiBmaWxsPSJ1cmwoI2JnR3JhZCkiLz4KICAKICA8IS0tIFN1biBnbG93IC0tPgogIDxjaXJjbGUgY3g9IjI0IiBjeT0iMjgiIHI9IjE0IiBmaWxsPSJ1cmwoI3N1bkdyYWQpIiBvcGFjaXR5PSIwLjkiIGZpbHRlcj0idXJsKCNnbG93KSIvPgogIAogIDwhLS0gQ2xvdWQgc2hhcGUgLS0+CiAgPGcgZmlsdGVyPSJ1cmwoI3NoYWRvdykiPgogICAgPGVsbGlwc2UgY3g9IjM2IiBjeT0iMzYiIHJ4PSIxNiIgcnk9IjEwIiBmaWxsPSJ1cmwoI2Nsb3VkR3JhZCkiLz4KICAgIDxlbGxpcHNlIGN4PSIyOCIgY3k9IjM4IiByeD0iMTAiIHJ5PSI4IiBmaWxsPSJ1cmwoI2Nsb3VkR3JhZCkiLz4KICAgIDxlbGxpcHNlIGN4PSI0NCIgY3k9IjM4IiByeD0iOCIgcnk9IjYiIGZpbGw9InVybCgjY2xvdWRHcmFkKSIvPgogICAgPGVsbGlwc2UgY3g9IjM2IiBjeT0iMzIiIHJ4PSI4IiByeT0iNiIgZmlsbD0iI2Y4ZmFmYyIvPgogIDwvZz4KICAKICA8IS0tIEFjY2VudCBsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMiA1MiBRMzIgNDggNTIgNTIiIHN0cm9rZT0idXJsKCNnbG93R3JhZCkiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjYiLz4KICAKICA8IS0tICJDVyIgdGV4dCBtaW5pbWFsIC0tPgogIDx0ZXh0IHg9IjMyIiB5PSI1OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9InN5c3RlbS11aSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI4IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjNjM2NmYxIiBvcGFjaXR5PSIwLjgiPkNXPC90ZXh0Pgo8L3N2Zz4K" alt="" loading="lazy"></div>
       <div class="p-name"><a href="https://github.com/TPAINN/Weather-App" target="_blank">Weather App</a></div>
       <p class="p-desc t"
          data-en="Real-time weather dashboard showing current conditions, forecasts and location-based data via weather API integration."
@@ -875,7 +876,7 @@ html{scrollbar-width:none}
       </div>
     </div>
     <div class="pcard span6 reveal">
-      <div class="p-em">🧮</div>
+      <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2.5"/><path d="M6.5 4.5h11v4h-11z" fill="currentColor" fill-opacity=".16" stroke-opacity=".7"/><circle cx="7.6" cy="13" r=".9" fill="currentColor" stroke="none"/><circle cx="12" cy="13" r=".9" fill="currentColor" stroke="none"/><circle cx="16.4" cy="13" r=".9" fill="currentColor" stroke="none"/><circle cx="7.6" cy="17" r=".9" fill="currentColor" stroke="none"/><circle cx="12" cy="17" r=".9" fill="currentColor" stroke="none"/><circle cx="16.4" cy="17" r=".9" fill="currentColor" stroke="none"/></svg></div>
       <div class="p-name"><a href="https://github.com/TPAINN/calculator" target="_blank">Calculator</a></div>
       <p class="p-desc t"
          data-en="Minimal, clean calculator built with React and Vite. Smooth UX with keyboard support and precise arithmetic operations."
@@ -947,11 +948,11 @@ html{scrollbar-width:none}
   <h2 class="sec-t reveal"><span class="t" data-en="Work ">Work </span><em>&amp;</em> <span class="t" data-en="Experience">Experience</span></h2>
   <div class="tl">
     <div class="ti reveal fl">
-      <div class="ty">2 Summers</div>
+      <div class="ty">2 Summer Seasons</div>
       <div class="tc">
         <h3>Waiter</h3>
         <div class="inst">Iliovasilema — Alonaki Beach, Pantokratoras, Preveza</div>
-        <div class="note">Front-of-house service at a seaside restaurant across two summer seasons</div>
+        <div class="note">Front-of-house service at a seaside restaurant during university summer breaks</div>
         <span class="bdg">Seasonal</span>
       </div>
     </div>
@@ -960,7 +961,7 @@ html{scrollbar-width:none}
       <div class="tc">
         <h3>Waiter</h3>
         <div class="inst">Vento Gelateria Pasticceria — Preveza</div>
-        <div class="note">Front-of-house service at a gelateria and pastry shop</div>
+        <div class="note">Front-of-house service at a gelateria and pastry shop during university studies</div>
         <span class="bdg">Seasonal</span>
       </div>
     </div>
@@ -969,7 +970,7 @@ html{scrollbar-width:none}
       <div class="tc">
         <h3>Bar Assistant</h3>
         <div class="inst">Alila Tales &amp; Spirits — Preveza</div>
-        <div class="note">Supported bar operations during peak summer season</div>
+        <div class="note">Supported bar operations during university summer breaks</div>
         <span class="bdg">Seasonal</span>
       </div>
     </div>
@@ -1136,7 +1137,7 @@ html{scrollbar-width:none}
   const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const REST_SCALE=28/50;
-  let tx=innerWidth/2,ty=innerHeight/2,cx=tx,cy=ty,px=tx,py=ty,angle=0;
+  let tx=innerWidth/2,ty=innerHeight/2,cx=tx,cy=ty,px=tx,py=ty,angle=0,t=0;
   let scaleCur=REST_SCALE,scaleTarget=REST_SCALE;
   let hovering=false,hoverCx=0,hoverCy=0,clicking=false;
 
@@ -1189,6 +1190,18 @@ html{scrollbar-width:none}
       const stretch=Math.min(speed*(hovering?.02:.05),hovering?.25:.8);
       skewX=1+stretch;skewY=1-stretch*.5;
       if(speed>.05)angle=Math.atan2(dy,dx)*(180/Math.PI);
+
+      // liquid wobble — organic asymmetric blob, calmer once landed on a target,
+      // jigglier the faster it's moving (like a droplet reacting to motion)
+      t+=.05+Math.min(speed*.004,.12);
+      const amt=(hovering?4:13)+Math.min(speed*.35,12);
+      const a=50+Math.sin(t*1.3)*amt;
+      const b=50+Math.sin(t*1.8+1.7)*amt;
+      const c=50+Math.sin(t*1.5+3.1)*amt;
+      const d=50+Math.sin(t*2.1+.8)*amt;
+      cur.style.borderRadius=
+        a.toFixed(1)+'% '+(100-a).toFixed(1)+'% '+(100-b).toFixed(1)+'% '+b.toFixed(1)+'% / '+
+        c.toFixed(1)+'% '+d.toFixed(1)+'% '+(100-d).toFixed(1)+'% '+(100-c).toFixed(1)+'%';
     }
 
     cur.style.transform=
