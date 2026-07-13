@@ -4,7 +4,9 @@
     { "src": "favicon.png", "use": "@vercel/static" },
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "certificates/**", "use": "@vercel/static" },
-    { "src": "cv/**", "use": "@vercel/static" }
+    { "src": "cv/**", "use": "@vercel/static" },
+    { "src": "og.png", "use": "@vercel/static" },
+    { "src": "case-study/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/$1" }
