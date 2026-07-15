@@ -88,35 +88,44 @@ h1 em{font-style:italic;color:var(--cu2)}
 .cta .ar{transition:transform .3s}
 .cta:hover .ar{transform:translate(4px,-4px)}
 
-/* ── realistic iPhone frame (19.5:9), adapted from provided iPhone CSS ── */
+/* ── realistic iPhone 15/16 frame (natural titanium) — matches Apple reference ── */
 .device{
-  --r:13.5%;                 /* corner radius as % of width, iPhone-like */
-  position:relative;width:100%;aspect-ratio:9/19.5;
-  background:linear-gradient(155deg,#161617,#050506 55%);
-  border-radius:calc(var(--r) + 6px);
-  padding:2.6%;
+  position:relative;width:100%;
+  padding:3%;
+  border-radius:19% / 8.7%;
+  background:
+    linear-gradient(148deg,#f6f7f8 0%,#c4c6cb 13%,#eef0f2 29%,#a9abb1 46%,#e7e9eb 61%,#b3b5bb 79%,#dedfe2 100%);
   box-shadow:
-    inset 0 0 0 1.5px rgba(232,201,154,.14),      /* titanium inner rim */
-    inset 0 0 3px 1px rgba(0,0,0,.9),
-    0 0 0 1px #000,
-    0 46px 80px -30px rgba(0,0,0,.92),
-    0 18px 44px -22px rgba(0,0,0,.7);
+    inset 0 0 0 1px rgba(255,255,255,.62),                /* bright titanium highlight */
+    inset 0 0 3px 1.5px rgba(0,0,0,.14),
+    0 1px 0 1px rgba(0,0,0,.18),
+    0 46px 82px -30px rgba(0,0,0,.92),
+    0 18px 44px -22px rgba(0,0,0,.66);
 }
-/* titanium side buttons */
-.device::before{content:"";position:absolute;left:-2px;top:19%;width:2px;height:6.4%;border-radius:2px;
-  background:linear-gradient(#3a3a3c,#1c1c1e);box-shadow:0 8.5% 0 rgba(58,58,60,1),0 17% 0 rgba(58,58,60,1)}
-.device::after{content:"";position:absolute;right:-2px;top:26%;width:2px;height:9%;border-radius:2px;
-  background:linear-gradient(#3a3a3c,#1c1c1e)}
-.device .screen{position:relative;width:100%;aspect-ratio:9/19.5;border-radius:var(--r);overflow:hidden;background:#fff;
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.35)}
-.device .screen img{width:100%;height:100%;object-fit:cover;object-position:top center}
+/* black glass + inner bezel */
+.device .screen{
+  position:relative;width:100%;aspect-ratio:9/19.5;
+  border-radius:14.5% / 6.65%;
+  overflow:hidden;background:#000;
+  box-shadow:0 0 0 3px #060606;                           /* thin black bezel between titanium and glass */
+}
+.device .screen img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+/* subtle glass glare */
+.device .screen::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(122deg,rgba(255,255,255,.13) 0%,rgba(255,255,255,0) 23%)}
 /* Dynamic Island */
-.device .island{position:absolute;top:2.4%;left:50%;transform:translateX(-50%);width:31%;height:3.3%;min-height:16px;
-  background:#000;border-radius:99px;z-index:4;box-shadow:0 1px 2px rgba(0,0,0,.4)}
-.device .island::after{content:"";position:absolute;right:14%;top:50%;transform:translateY(-50%);width:20%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 60% 40%,#141b2e,#05070d 70%);box-shadow:inset 0 0 2px rgba(120,140,200,.4)}
-/* soft screen glare */
-.device .screen::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
-  background:linear-gradient(125deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 26%)}
+.device .island{position:absolute;top:2%;left:50%;transform:translateX(-50%);
+  width:28.5%;height:3.05%;min-height:15px;background:#000;border-radius:99px;z-index:4}
+.device .island::after{content:"";position:absolute;right:12%;top:50%;transform:translateY(-50%);
+  width:17%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 60% 40%,#20263a,#05070d 66%);
+  box-shadow:inset 0 0 1.5px rgba(120,140,200,.5)}
+/* physical titanium buttons — left: action + volume up/down · right: side button */
+.device .btns i{position:absolute;border-radius:1.6px;background:linear-gradient(90deg,#d5d6da,#a7a9af);
+  box-shadow:inset 0 .5px 1px rgba(255,255,255,.55),inset 0 -.5px 1px rgba(0,0,0,.32),-1px 0 1.5px rgba(0,0,0,.22)}
+.device .btns .a{left:-.9%;top:15%;width:1.5%;height:4.3%}
+.device .btns .vu{left:-.9%;top:22.3%;width:1.5%;height:7.4%}
+.device .btns .vd{left:-.9%;top:31%;width:1.5%;height:7.4%}
+.device .btns .pw{right:-.9%;top:24.5%;width:1.5%;height:11.2%;background:linear-gradient(270deg,#d5d6da,#a7a9af);box-shadow:inset 0 .5px 1px rgba(255,255,255,.55),inset 0 -.5px 1px rgba(0,0,0,.32),1px 0 1.5px rgba(0,0,0,.22)}
 
 /* hero device cluster */
 .cluster{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:clamp(14px,3vw,40px);align-items:center;perspective:2000px}
