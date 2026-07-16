@@ -120,12 +120,12 @@ h1 em{font-style:italic;color:var(--cu2)}
   width:17%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 60% 40%,#20263a,#05070d 66%);
   box-shadow:inset 0 0 1.5px rgba(120,140,200,.5)}
 /* physical titanium buttons — left: action + volume up/down · right: side button */
-.device .btns i{position:absolute;border-radius:1.6px;background:linear-gradient(90deg,#d5d6da,#a7a9af);
+.device>i{position:absolute;border-radius:1.6px;background:linear-gradient(90deg,#d5d6da,#a7a9af);z-index:2;
   box-shadow:inset 0 .5px 1px rgba(255,255,255,.55),inset 0 -.5px 1px rgba(0,0,0,.32),-1px 0 1.5px rgba(0,0,0,.22)}
-.device .btns .a{left:-.9%;top:15%;width:1.5%;height:4.3%}
-.device .btns .vu{left:-.9%;top:22.3%;width:1.5%;height:7.4%}
-.device .btns .vd{left:-.9%;top:31%;width:1.5%;height:7.4%}
-.device .btns .pw{right:-.9%;top:24.5%;width:1.5%;height:11.2%;background:linear-gradient(270deg,#d5d6da,#a7a9af);box-shadow:inset 0 .5px 1px rgba(255,255,255,.55),inset 0 -.5px 1px rgba(0,0,0,.32),1px 0 1.5px rgba(0,0,0,.22)}
+.device>i.a{left:-.9%;top:15%;width:1.5%;height:4.3%}
+.device>i.vu{left:-.9%;top:22.3%;width:1.5%;height:7.4%}
+.device>i.vd{left:-.9%;top:31%;width:1.5%;height:7.4%}
+.device>i.pw{right:-.9%;top:24.5%;width:1.5%;height:11.2%;background:linear-gradient(270deg,#d5d6da,#a7a9af);box-shadow:inset 0 .5px 1px rgba(255,255,255,.55),inset 0 -.5px 1px rgba(0,0,0,.32),1px 0 1.5px rgba(0,0,0,.22)}
 
 /* hero device cluster */
 .cluster{margin-top:clamp(56px,8vw,96px);display:grid;grid-template-columns:1fr 1.12fr 1fr;gap:clamp(14px,3vw,40px);align-items:center;perspective:2000px}
@@ -251,9 +251,9 @@ footer h2{margin-bottom:34px}
   <a class="cta reveal" href="https://kalathaki.vercel.app" target="_blank" rel="noopener">Open the live app <span class="ar">↗</span></a>
 
   <div class="cluster reveal">
-    <div class="device p-l"><div class="screen"><span class="island"></span><img src="app-recipes.jpg" alt="Καλαθάκι recipes tab — recipe of the day and cards with calories and macros" fetchpriority="high" width="393" height="852"></div></div>
-    <div class="device p-c"><div class="screen"><span class="island"></span><img src="app-home.jpg" alt="Καλαθάκι home dashboard — AI meal planner, deals and daily price drops" fetchpriority="high" width="393" height="852"></div></div>
-    <div class="device p-r"><div class="screen"><span class="island"></span><img src="app-premium.jpg" alt="Καλαθάκι Premium subscription tiers, powered by Stripe" fetchpriority="high" width="393" height="852"></div></div>
+    <div class="device p-l"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-recipes.jpg" alt="Καλαθάκι recipes tab — recipe of the day and cards with calories and macros" fetchpriority="high" width="393" height="852"></div></div>
+    <div class="device p-c"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-home.jpg" alt="Καλαθάκι home dashboard — AI meal planner, deals and daily price drops" fetchpriority="high" width="393" height="852"></div></div>
+    <div class="device p-r"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-premium.jpg" alt="Καλαθάκι Premium subscription tiers, powered by Stripe" fetchpriority="high" width="393" height="852"></div></div>
   </div>
 </div>
 
@@ -302,7 +302,7 @@ footer h2{margin-bottom:34px}
 <section>
   <div class="wrap">
     <div class="showcase">
-      <div class="device order-img reveal"><div class="screen"><span class="island"></span><img src="app-offers.jpg" alt="Live deals feed — real discounted products with chain badges and price drops" loading="lazy" width="393" height="852"></div></div>
+      <div class="device order-img reveal"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-offers.jpg" alt="Live deals feed — real discounted products with chain badges and price drops" loading="lazy" width="393" height="852"></div></div>
       <div class="cap order-txt reveal">
         <div class="kicker">Real data, every day</div>
         <h3>A live deals engine, not a demo</h3>
@@ -320,7 +320,7 @@ footer h2{margin-bottom:34px}
         <h3>Recipes, meal plans and macros</h3>
         <p>A library of recipes drops ingredients straight into your list. The AI meal planner builds a week of meals around your body and budget in two minutes, and Meal Macros turns a photo of a plate into calories and macros — the features behind the Premium tier.</p>
       </div>
-      <div class="device order-img reveal"><div class="screen"><span class="island"></span><img src="app-recipes-grid.jpg" alt="Recipes grid with food photography, cook time, calories and protein per recipe" loading="lazy" width="393" height="852"></div></div>
+      <div class="device order-img reveal"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-recipes-grid.jpg" alt="Recipes grid with food photography, cook time, calories and protein per recipe" loading="lazy" width="393" height="852"></div></div>
     </div>
   </div>
 </section>
