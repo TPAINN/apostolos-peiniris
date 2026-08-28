@@ -653,9 +653,9 @@ footer{
 @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:none}}
 @keyframes fadeRight{0%{opacity:0;transform:translateX(-20px)}100%{opacity:1;transform:none}}
 @keyframes fadeIn{to{opacity:1}}
-.reveal{opacity:0;transform:translate3d(0,28px,0);filter:blur(3px);will-change:opacity,transform,filter;transition:opacity .82s cubic-bezier(.22,1,.36,1),transform .82s cubic-bezier(.22,1,.36,1),filter .82s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms)}
-.reveal.fl{transform:translate3d(-28px,0,0)}
-.reveal.v{opacity:1;transform:none;filter:blur(0)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.reveal.fl{transform:translateX(-24px)}
+.reveal.v{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){ .hero-name{animation:none!important} .hero-eyebrow,.hero-subtitle,.hero-desc,.hero-ctas,.hero-soc{animation:none!important;opacity:1} .hero-photo-wrap{animation:none!important;opacity:1} .reveal{transition:none!important;opacity:1!important;transform:none!important} .hero-frame{animation:none!important} .scroll-ind{animation:none!important} }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
@@ -1673,13 +1673,6 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
   if(window.ResizeObserver){ new ResizeObserver(sync).observe(details); }
 })();
 </script>
-
-<style id="scroll-reveal-polish">
-/* Scroll reveals are visual-only: no layout movement, no body-text parallax. */
-.reveal { backface-visibility:hidden; -webkit-font-smoothing:antialiased; }
-@media(max-width:768px){ .reveal { transform:translate3d(0,20px,0); } .reveal.fl { transform:translate3d(0,20px,0); } }
-@media(prefers-reduced-motion:reduce){ .reveal,.reveal.fl,.reveal.v { filter:none !important; transform:none !important; transition:none !important; opacity:1 !important; } }
-</style>
 </head>
 <body class="preloader-active locked">
 
@@ -2314,10 +2307,10 @@ window.addEventListener('scroll',()=>{
 // ── REVEAL ────────────────────────────────────────────────────────────────
 const obs=('IntersectionObserver' in window) ? new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}});
-},{threshold:.08,rootMargin:'0px 0px -14% 0px'}) : null;
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'}) : null;
 document.querySelectorAll('.reveal').forEach((el,i)=>{
   const g=el.closest('.core-grid,.tags,.bento,.cert-grid,.lg,.soc-grid,.contact-info-stack');
-  if(g){const s=Array.from(g.querySelectorAll('.reveal'));el.style.setProperty('--reveal-delay',Math.min(Math.max(s.indexOf(el),0)*70,280)+'ms');}
+  if(g){const s=Array.from(g.querySelectorAll('.reveal'));el.style.transitionDelay=(s.indexOf(el)*.08)+'s';}
   if(obs && obs.observe) obs.observe(el); else el.classList.add('v');
 }); if(!('IntersectionObserver' in window)) document.querySelectorAll('.reveal').forEach(el=>el.classList.add('v'));
 

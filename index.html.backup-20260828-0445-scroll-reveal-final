@@ -2317,7 +2317,7 @@ const obs=('IntersectionObserver' in window) ? new IntersectionObserver(entries=
 },{threshold:.08,rootMargin:'0px 0px -14% 0px'}) : null;
 document.querySelectorAll('.reveal').forEach((el,i)=>{
   const g=el.closest('.core-grid,.tags,.bento,.cert-grid,.lg,.soc-grid,.contact-info-stack');
-  if(g){const s=Array.from(g.querySelectorAll('.reveal'));el.style.setProperty('--reveal-delay',Math.min(Math.max(s.indexOf(el),0)*70,280)+'ms');}
+  if(g){const s=Array.from(g.querySelectorAll('.reveal'));el.style.setProperty('--reveal-delay',Math.min(s.indexOf(el)*70,280)+'ms');}
   if(obs && obs.observe) obs.observe(el); else el.classList.add('v');
 }); if(!('IntersectionObserver' in window)) document.querySelectorAll('.reveal').forEach(el=>el.classList.add('v'));
 
