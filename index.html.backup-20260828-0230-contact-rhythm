@@ -1629,19 +1629,17 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 #contact .contact-form-column .cf-field--message textarea { flex:1; min-height:160px; height:auto; resize:vertical; }
 #contact .contact-form-column .connect-submit { align-self:flex-start; width:auto; min-width:0; margin-top:18px; padding:0 34px; }
 #contact .contact-form-column .cf-field--message textarea { flex:0 1 auto; max-height:260px; min-height:160px; }
-#contact .contact-form-column .connect-form { justify-content:flex-start; gap:22px; }
-#contact .contact-form-column .cf-field--message { flex:1 1 auto; min-height:0; }
-#contact .contact-form-column .cf-field--message textarea { flex:1 1 auto; width:100%; height:180px; min-height:180px; max-height:400px; resize:vertical; }
-#contact .message-chips { display:flex; flex-wrap:wrap; gap:10px; margin-top:-10px; }
-#contact .message-chip { appearance:none; border:1px solid rgba(240,161,60,.25); border-radius:99px; padding:8px 16px; color:#8f897a; background:rgba(255,255,255,.025); font:500 .8rem/1 'JetBrains Mono',monospace; letter-spacing:.02em; transition:all .25s; }
-#contact .message-chip:hover,#contact .message-chip:focus-visible,#contact .message-chip.active { color:#f0a13c; border-color:#f0a13c; background:rgba(240,161,60,.06); transform:translateY(-2px); }
+#contact .contact-form-column .connect-form { justify-content:space-between; }
+#contact .message-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+#contact .message-chip { appearance:none; border:1px solid rgba(232,201,154,.18); border-radius:999px; padding:8px 12px; color:var(--text2); background:rgba(255,255,255,.025); font:500 .62rem/1 'JetBrains Mono',monospace; letter-spacing:.04em; transition:color .2s,background .2s,border-color .2s,transform .2s; }
+#contact .message-chip:hover,#contact .message-chip:focus-visible { color:var(--cu3); border-color:rgba(232,201,154,.5); background:rgba(184,115,51,.11); transform:translateY(-2px); }
 #contact .message-chip:focus-visible { outline:2px solid var(--cu3); outline-offset:3px; }
-#contact .contact-form-column .connect-submit { align-self:flex-start; margin-top:auto; padding:0 44px; }
+#sbar { top:92px; right:24px; height:96px; transform:none; }
 .decor-glow { z-index:0; }
 #projects .w,#certifications .w,#contact .w { z-index:2; }
 #contact .contact-form-column { padding-top:0; }
-#sbar { display:none !important; }
-@media(max-width:560px){#contact .contact-form-column .connect-form { gap:0; } #contact .contact-form-column .cf-field--message { display:block; } #contact .contact-form-column .cf-field--message textarea { height:auto; min-height:116px; max-height:none; flex:none; } #contact .message-chips{gap:6px;margin-top:8px;}#contact .message-chip{padding:8px 10px;font-size:.58rem;}#contact .contact-form-column .connect-submit{width:100%;min-width:0;margin-top:18px;padding:0 20px;} }
+#contact .contact-form-column .cf-field--message { flex:none; }
+@media(max-width:560px){#contact .message-chips{gap:6px;margin-top:8px;}#contact .message-chip{padding:8px 10px;font-size:.58rem;}#contact .contact-form-column .connect-submit{width:100%;min-width:0;margin-top:18px;padding:0 20px;}#sbar{display:none;}}
 #contact .contact-profiles .soc-grid { max-width:none; }
 @media(max-width:900px){#contact .contact-grid { display:flex; flex-direction:column; gap:28px!important; } #contact .contact-primary,#contact .contact-form-column,#contact .contact-profiles { width:100%; padding-top:0; } #contact .contact-form-column { display:block; height:auto; order:2; } #contact .contact-form-column .connect-form { display:block; height:auto; } #contact .contact-form-column .cf-field--message { display:block; } #contact .contact-form-column .cf-field--message textarea { min-height:116px; } #contact .contact-profiles { order:3; } }
 </style>
@@ -1680,14 +1678,14 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
     <li><a href="#contact" onclick="closeMenu()" class="t" data-en="Contact">Contact</a></li>
   </ul>
 </div>
-
+<div id="sbar" aria-hidden="true"><div id="strack"></div><div id="sthumb"></div><div id="spct">0%</div></div>
 <!-- CURSOR -->
 <div id="cursor" aria-hidden="true"></div>
 <div id="prog" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav id="nav" class="topbar topbar--dock topbar--adaptive" aria-label="Primary">
-  <a href="#hero" class="nav-logo" aria-label="Apostolos Peiniris"><img src="favicon.png" alt="Apostolos Peiniris AP Logo" class="nav-logo-img" width="38" height="38"></a>
+  <a href="#hero" class="nav-logo" aria-label="Apostolos Peiniris"><img src="/favicon.png" alt="Apostolos Peiniris AP Logo" class="nav-logo-img" width="38" height="38"></a>
   <div class="nav-core">
   <ul class="nav-links" aria-label="Primary navigation">
     <li><a href="#skills" class="t" data-en="Skills"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.2"></rect><rect x="14" y="3" width="7" height="7" rx="1.2"></rect><rect x="3" y="14" width="7" height="7" rx="1.2"></rect><rect x="14" y="14" width="7" height="7" rx="1.2"></rect></svg></span>Skills</a></li>
