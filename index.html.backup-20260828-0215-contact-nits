@@ -1576,10 +1576,8 @@ section::before {
 #preloader::before{content:'';position:absolute;width:min(78vw,960px);height:min(78vw,960px);left:-31vw;bottom:-46vw;border-radius:50%;background:radial-gradient(circle,rgba(184,115,51,.22),rgba(184,115,51,.055) 36%,transparent 70%);filter:blur(10px);}
 #preloader.done{transform:translateY(-101%);}
 .pl-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:17px;text-align:center;}
-.pl-name{visibility:hidden;overflow:hidden;color:var(--cu2);font:italic 400 clamp(2.25rem,6vw,4.7rem)/.95 'Cormorant Garamond',serif;letter-spacing:-.035em;font-synthesis:none;}
-#preloader.fonts-ready .pl-name{visibility:visible;}
-.pl-name span{display:inline-block;transform:translateY(112%);animation:plRise .9s cubic-bezier(.22,1,.36,1) paused forwards .12s;}
-#preloader.fonts-ready .pl-name span{animation-play-state:running;}
+.pl-name{overflow:hidden;color:var(--cu2);font:italic 400 clamp(2.25rem,6vw,4.7rem)/.95 'Cormorant Garamond',serif;letter-spacing:-.035em;}
+.pl-name span{display:inline-block;transform:translateY(112%);animation:plRise .9s cubic-bezier(.22,1,.36,1) forwards .12s;}
 .pl-role{opacity:0;color:var(--text2);font:500 .68rem/1 'JetBrains Mono',monospace;letter-spacing:.29em;text-transform:uppercase;animation:plFade .7s ease forwards .63s;}
 @keyframes plRise{to{transform:translateY(0)}}@keyframes plFade{to{opacity:1}}
 #pl-count{position:absolute;right:clamp(20px,3vw,42px);bottom:30px;color:var(--cu2);font:500 .75rem/1 'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;letter-spacing:.05em;}
@@ -1627,19 +1625,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 #contact .contact-form-column .connect-form { box-sizing:border-box; display:flex; flex:1; flex-direction:column; height:100%; margin:0; }
 #contact .contact-form-column .cf-field--message { display:flex; flex:1; flex-direction:column; min-height:0; }
 #contact .contact-form-column .cf-field--message textarea { flex:1; min-height:160px; height:auto; resize:vertical; }
-#contact .contact-form-column .connect-submit { align-self:flex-start; width:auto; min-width:0; margin-top:18px; padding:0 34px; }
-#contact .contact-form-column .cf-field--message textarea { flex:0 1 auto; max-height:260px; min-height:160px; }
-#contact .contact-form-column .connect-form { justify-content:space-between; }
-#contact .message-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-#contact .message-chip { appearance:none; border:1px solid rgba(232,201,154,.18); border-radius:999px; padding:8px 12px; color:var(--text2); background:rgba(255,255,255,.025); font:500 .62rem/1 'JetBrains Mono',monospace; letter-spacing:.04em; transition:color .2s,background .2s,border-color .2s,transform .2s; }
-#contact .message-chip:hover,#contact .message-chip:focus-visible { color:var(--cu3); border-color:rgba(232,201,154,.5); background:rgba(184,115,51,.11); transform:translateY(-2px); }
-#contact .message-chip:focus-visible { outline:2px solid var(--cu3); outline-offset:3px; }
-#sbar { top:92px; right:24px; height:96px; transform:none; }
-.decor-glow { z-index:0; }
-#projects .w,#certifications .w,#contact .w { z-index:2; }
-#contact .contact-form-column { padding-top:0; }
-#contact .contact-form-column .cf-field--message { flex:none; }
-@media(max-width:560px){#contact .message-chips{gap:6px;margin-top:8px;}#contact .message-chip{padding:8px 10px;font-size:.58rem;}#contact .contact-form-column .connect-submit{width:100%;min-width:0;margin-top:18px;padding:0 20px;}#sbar{display:none;}}
+#contact .contact-form-column .connect-submit { margin-top:auto; }
 #contact .contact-profiles .soc-grid { max-width:none; }
 @media(max-width:900px){#contact .contact-grid { display:flex; flex-direction:column; gap:28px!important; } #contact .contact-primary,#contact .contact-form-column,#contact .contact-profiles { width:100%; padding-top:0; } #contact .contact-form-column { display:block; height:auto; order:2; } #contact .contact-form-column .connect-form { display:block; height:auto; } #contact .contact-form-column .cf-field--message { display:block; } #contact .contact-form-column .cf-field--message textarea { min-height:116px; } #contact .contact-profiles { order:3; } }
 </style>
@@ -2158,11 +2144,6 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
           <label class="cf-field"><span>Email address</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
         </div>
         <label class="cf-field cf-field--message"><span>What can I help with?</span><textarea name="message" rows="4" placeholder="Tell me a little about the project, role, or idea." required></textarea></label>
-        <div class="message-chips" aria-label="Quick message starters">
-          <button type="button" class="message-chip" data-message="I would like to discuss a job opportunity.">Job opportunity</button>
-          <button type="button" class="message-chip" data-message="I would like to discuss a project.">Project</button>
-          <button type="button" class="message-chip" data-message="Just saying hi — I would love to connect.">Just saying hi</button>
-        </div>
         <button class="connect-submit" type="submit"><span>Start a conversation</span><i aria-hidden="true">↗</i></button>
       </form>
     </div>
@@ -3085,8 +3066,6 @@ function updateScrollProgress(progress){
   if (!preloader || reduced || seen) { finishNow(); return; }
   try { sessionStorage.setItem('ap-portfolio-preloader-seen', '1'); } catch (e) {}
   var count = document.getElementById('pl-count'), fill = document.getElementById('pl-fill');
-  var fontPromise = (document.fonts && document.fonts.load) ? document.fonts.load('italic 400 4rem "Cormorant Garamond"') : Promise.resolve();
-  Promise.resolve(fontPromise).catch(function () {}).then(function () { if (preloader) preloader.classList.add('fonts-ready'); });
   var duration = 1160, start = performance.now();
   function tick(now) {
     var progress = Math.min(1, (now - start) / duration), eased = 1 - Math.pow(1 - progress, 3), value = Math.round(eased * 100);
@@ -3122,21 +3101,6 @@ function updateScrollProgress(progress){
   window.addEventListener('resize', request, { passive:true });
   if (reduce) { try { reduce.addEventListener('change', request); } catch (e) {} }
   request();
-})();
-</script>
-
-<script id="contact-message-chips-script">
-(function(){
-  var form=document.getElementById('connect-form');
-  if(!form) return;
-  var textarea=form.querySelector('textarea[name="message"]');
-  form.querySelectorAll('.message-chip').forEach(function(chip){
-    chip.addEventListener('click',function(){
-      textarea.value=chip.getAttribute('data-message') || '';
-      textarea.dispatchEvent(new Event('input',{bubbles:true}));
-      textarea.focus();
-    });
-  });
 })();
 </script>
 </body>
