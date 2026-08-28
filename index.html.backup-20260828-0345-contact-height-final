@@ -1648,10 +1648,8 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 
 <style id="equal-contact-height-overrides">
 @media(min-width:901px){
-  #contact .contact-grid { align-items:stretch !important; }
-  #contact .contact-form-column { align-self:stretch !important; height:var(--contact-details-height,475px) !important; padding-top:0 !important; min-height:0 !important; transform:none !important; }
-  #contact .contact-form-column .connect-form { transform:none !important; opacity:1 !important; filter:none !important; }
-  #contact .contact-form-column .connect-form { height:100% !important; min-height:0 !important; overflow:hidden; padding:18px; gap:12px; }
+  #contact .contact-form-column { align-self:start; height:var(--contact-details-height,475px); padding-top:0 !important; min-height:0; }
+  #contact .contact-form-column .connect-form { height:100%; min-height:0; overflow:hidden; padding:18px; gap:12px; }
   #contact .connect-form-head { margin-bottom:0; }
   #contact .cf-field input { height:52px; }
   #contact .contact-form-column .cf-field--message textarea { height:150px; min-height:120px; max-height:240px; }

@@ -1645,34 +1645,6 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 #contact .contact-profiles .soc-grid { max-width:none; }
 @media(max-width:900px){#contact .contact-grid { display:flex; flex-direction:column; gap:28px!important; } #contact .contact-primary,#contact .contact-form-column,#contact .contact-profiles { width:100%; padding-top:0; } #contact .contact-form-column { display:block; height:auto; order:2; } #contact .contact-form-column .connect-form { display:block; height:auto; } #contact .contact-form-column .cf-field--message { display:block; } #contact .contact-form-column .cf-field--message textarea { min-height:116px; } #contact .contact-profiles { order:3; } }
 </style>
-
-<style id="equal-contact-height-overrides">
-@media(min-width:901px){
-  #contact .contact-grid { align-items:stretch !important; }
-  #contact .contact-form-column { align-self:stretch !important; height:var(--contact-details-height,475px) !important; padding-top:0 !important; min-height:0 !important; transform:none !important; }
-  #contact .contact-form-column .connect-form { transform:none !important; opacity:1 !important; filter:none !important; }
-  #contact .contact-form-column .connect-form { height:100% !important; min-height:0 !important; overflow:hidden; padding:18px; gap:12px; }
-  #contact .connect-form-head { margin-bottom:0; }
-  #contact .cf-field input { height:52px; }
-  #contact .contact-form-column .cf-field--message textarea { height:150px; min-height:120px; max-height:240px; }
-  #contact .message-chips { margin-top:0; }
-  #contact .contact-form-column .connect-submit { min-height:52px; }
-}
-@media(max-width:900px){#contact .contact-form-column{height:auto!important;}}
-</style>
-<script id="equal-contact-height-script">
-(function(){
-  var details=document.querySelector('#contact .contact-primary');
-  var column=document.querySelector('#contact .contact-form-column');
-  if(!details || !column) return;
-  function sync(){
-    if(window.innerWidth>900){ column.style.setProperty('--contact-details-height', Math.round(details.getBoundingClientRect().height)+'px'); }
-    else { column.style.removeProperty('--contact-details-height'); }
-  }
-  sync(); window.addEventListener('resize',sync,{passive:true});
-  if(window.ResizeObserver){ new ResizeObserver(sync).observe(details); }
-})();
-</script>
 </head>
 <body class="preloader-active locked">
 
