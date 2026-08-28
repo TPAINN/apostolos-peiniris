@@ -2319,7 +2319,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 
     cur.style.transform=
       'translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px) translate(-50%,-50%) '+
-      'rotate('+(viewing?0:angle).toFixed(1)+'deg) scale('+scale.toFixed(3)+') '+
+      'rotate('+angle.toFixed(1)+'deg) scale('+scale.toFixed(3)+') '+
       'scaleX('+skewX.toFixed(3)+') scaleY('+skewY.toFixed(3)+')';
 
     requestAnimationFrame(tick);

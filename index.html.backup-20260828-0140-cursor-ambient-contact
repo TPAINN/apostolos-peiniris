@@ -1599,10 +1599,10 @@ footer{position:relative;z-index:1;display:flex;align-items:center;gap:18px;padd
 </style>
 
 <style id="final-interaction-layout-styles">
-/* Stronger ambient media: more evident texture while overlays retain text contrast. */
-body.ambient-ready #ambient-video-layer { opacity:.46; }
-#ambient-video-layer video { width:136%; height:136%; inset:-18%; transform:scale(1.19); filter:brightness(.80) saturate(.84) contrast(1.07) blur(.75px); }
-#ambient-video-layer::after { background:linear-gradient(180deg,rgba(5,4,2,.54) 0%,rgba(5,4,2,.28) 43%,rgba(5,4,2,.52) 100%),radial-gradient(ellipse at 50% 37%,transparent 0%,rgba(5,4,2,.22) 84%); }
+/* Stronger, still readable ambient media — content remains above two darkening layers. */
+body.ambient-ready #ambient-video-layer { opacity:.38; }
+#ambient-video-layer video { width:132%; height:132%; inset:-16%; transform:scale(1.16); filter:brightness(.72) saturate(.76) contrast(1.10) blur(1.15px); }
+#ambient-video-layer::after { background:linear-gradient(180deg,rgba(5,4,2,.61) 0%,rgba(5,4,2,.34) 43%,rgba(5,4,2,.59) 100%),radial-gradient(ellipse at 50% 37%,transparent 0%,rgba(5,4,2,.30) 84%); }
 
 /* Decorative ambience only: body text and headings remain stable. */
 #projects,#certifications,#contact { position:relative; isolation:isolate; overflow:clip; }
@@ -1617,17 +1617,14 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 #cursor.is-view { background:var(--cu3); mix-blend-mode:normal; box-shadow:0 0 0 1px rgba(255,232,194,.28),0 0 34px rgba(184,115,51,.35); }
 #cursor.is-view::after { opacity:1; transform:scale(1); }
 
-/* Contact: deliberate equal columns. The form aligns to the direct-card baseline and finishes with the profile list. */
-#contact .contact-grid { grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important; grid-template-rows:auto auto; column-gap:clamp(40px,4vw,60px) !important; row-gap:25px !important; align-items:start !important; }
+/* Contact: direct details and profiles form the left column; message form anchors the right column. */
+#contact .contact-grid { grid-template-columns:minmax(0,.93fr) minmax(370px,.82fr) !important; grid-template-rows:auto auto; column-gap:clamp(42px,7vw,104px) !important; row-gap:25px !important; align-items:start !important; }
 #contact .contact-primary { grid-column:1; grid-row:1; min-width:0; }
-#contact .contact-form-column { grid-column:2; grid-row:1 / span 2; align-self:stretch; display:flex; padding-top:clamp(56px,5vw,88px); min-width:0; }
+#contact .contact-form-column { grid-column:2; grid-row:1 / span 2; padding-top:clamp(56px,5vw,88px); min-width:0; }
 #contact .contact-profiles { grid-column:1; grid-row:2; align-self:start; padding-top:0!important; }
-#contact .contact-form-column .connect-form { box-sizing:border-box; display:flex; flex:1; flex-direction:column; height:100%; margin:0; }
-#contact .contact-form-column .cf-field--message { display:flex; flex:1; flex-direction:column; min-height:0; }
-#contact .contact-form-column .cf-field--message textarea { flex:1; min-height:160px; height:auto; resize:vertical; }
-#contact .contact-form-column .connect-submit { margin-top:auto; }
+#contact .contact-form-column .connect-form { margin:0; }
 #contact .contact-profiles .soc-grid { max-width:none; }
-@media(max-width:900px){#contact .contact-grid { display:flex; flex-direction:column; gap:28px!important; } #contact .contact-primary,#contact .contact-form-column,#contact .contact-profiles { width:100%; padding-top:0; } #contact .contact-form-column { display:block; height:auto; order:2; } #contact .contact-form-column .connect-form { display:block; height:auto; } #contact .contact-form-column .cf-field--message { display:block; } #contact .contact-form-column .cf-field--message textarea { min-height:116px; } #contact .contact-profiles { order:3; } }
+@media(max-width:900px){#contact .contact-grid { display:flex; flex-direction:column; gap:28px!important; } #contact .contact-primary,#contact .contact-form-column,#contact .contact-profiles { width:100%; padding-top:0; } #contact .contact-form-column { order:2; } #contact .contact-profiles { order:3; } }
 </style>
 </head>
 <body class="preloader-active locked">
@@ -2239,40 +2236,19 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
   document.addEventListener('mousedown',()=>clicking=true);
   document.addEventListener('mouseup',()=>clicking=false);
 
-  // Delegated detection makes the contextual VIEW cursor resilient to nested card content and fast pointer movement.
+  // grow the cursor over anything clickable — hover center is captured once,
+  // not re-read live, so it can't fight the magnetic-tug elements below
   const growable='a,button,.ccard,.skill-card,.pcard,.soc-i,.ci,.sc,.lcard,.cb2';
   const viewable='.pcard,.featured-project,.featured-card';
-  let activeCursorTarget=null;
-  function resolveCursorTarget(node){
-    if(!(node instanceof Element)) return null;
-    return node.closest(viewable) || node.closest(growable);
-  }
-  function activateCursorTarget(el){
-    if(!el) return clearCursorTarget();
-    if(activeCursorTarget===el) return;
-    activeCursorTarget=el;
-    const b=el.getBoundingClientRect();
-    hoverCx=b.left+b.width/2;hoverCy=b.top+b.height/2;
-    viewing=el.matches(viewable); cur.classList.toggle('is-view',viewing);
-    hovering=true;scaleTarget=viewing?2.12:1.12;
-  }
-  function clearCursorTarget(){
-    activeCursorTarget=null; hovering=false; viewing=false;
-    cur.classList.remove('is-view'); scaleTarget=REST_SCALE;
-  }
-  document.addEventListener('pointerover',event=>{
-    const next=resolveCursorTarget(event.target), previous=resolveCursorTarget(event.relatedTarget);
-    if(next && next!==previous) activateCursorTarget(next);
-  },true);
-  document.addEventListener('pointerout',event=>{
-    const previous=resolveCursorTarget(event.target), next=resolveCursorTarget(event.relatedTarget);
-    if(previous!==activeCursorTarget || previous===next) return;
-    if(next) activateCursorTarget(next); else clearCursorTarget();
-  },true);
-  document.addEventListener('pointermove',event=>{
-    const next=resolveCursorTarget(event.target);
-    if(next!==activeCursorTarget){ if(next) activateCursorTarget(next); else clearCursorTarget(); }
-  },{passive:true});
+  document.querySelectorAll(growable).forEach(el=>{
+    el.addEventListener('mouseenter',()=>{
+      const b=el.getBoundingClientRect();
+      hoverCx=b.left+b.width/2;hoverCy=b.top+b.height/2;
+      viewing=el.matches(viewable); cur.classList.toggle('is-view',viewing);
+      hovering=true;scaleTarget=viewing?2.06:1.12;
+    });
+    el.addEventListener('mouseleave',()=>{hovering=false;viewing=false;cur.classList.remove('is-view');scaleTarget=REST_SCALE;});
+  });
 
   // magnetic tug — compact standalone buttons only (cards keep their own hover-lift untouched)
   document.querySelectorAll('.soc-i,.cb2').forEach(el=>{
@@ -2319,7 +2295,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 
     cur.style.transform=
       'translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px) translate(-50%,-50%) '+
-      'rotate('+(viewing?0:angle).toFixed(1)+'deg) scale('+scale.toFixed(3)+') '+
+      'rotate('+angle.toFixed(1)+'deg) scale('+scale.toFixed(3)+') '+
       'scaleX('+skewX.toFixed(3)+') scaleY('+skewY.toFixed(3)+')';
 
     requestAnimationFrame(tick);
