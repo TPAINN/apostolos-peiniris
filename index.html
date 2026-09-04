@@ -389,37 +389,11 @@ section{padding:72px 0}
 .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
 .ccard{
   background:var(--b2);border:1px solid var(--bdr);border-radius:var(--r);
-  overflow:hidden;cursor:pointer;
+  overflow:hidden;
   transition:all .3s cubic-bezier(.22,1,.36,1);
   position:relative;
 }
 .ccard:hover{border-color:rgba(184,115,51,.3);transform:translateY(-6px);box-shadow:var(--sh-cu-lg)}
-.ct{
-  height:145px;overflow:hidden;position:relative;
-  background:var(--b3);border-bottom:1px solid var(--bdr);
-}
-.ct img{
-  width:100%;height:100%;object-fit:cover;object-position:top;
-  transform:scale(1.08);filter:brightness(.5) saturate(.75) blur(9px);
-  transition:transform .6s cubic-bezier(.22,1,.36,1),filter .5s cubic-bezier(.22,1,.36,1);
-}
-.ccard.preview-open .ct img,.ccard:focus .ct img{transform:scale(1.12);filter:brightness(.88) saturate(1) blur(0px)}
-@media(hover:hover){
-  .ccard:hover .ct img{transform:scale(1.12);filter:brightness(.88) saturate(1) blur(0px)}
-}
-.ct-ov{
-  position:absolute;inset:0;
-  background:linear-gradient(transparent 30%,rgba(10,8,6,.7));
-  display:flex;align-items:flex-end;justify-content:flex-end;
-  padding:12px;opacity:0;transition:opacity .3s;
-}
-.ccard.preview-open .ct-ov,.ccard:hover .ct-ov{opacity:1;}
-.ct-btn{
-  background:rgba(232,201,154,.92);color:var(--b0);
-  font-size:.72rem;font-weight:700;border-radius:6px;
-  padding:6px 12px;display:flex;align-items:center;gap:4px;
-  letter-spacing:.04em;
-}
 .cb{padding:18px 20px 20px}
 .cb-badge{
   display:inline-block;font-size:.66rem;font-weight:700;
@@ -566,88 +540,6 @@ footer{
 .ft-copy{display:flex;align-items:center;gap:8px}
 .ft-cu{width:16px;height:1px;background:linear-gradient(90deg,var(--cu),var(--cu3))}
 
-/* ── CERT POPUP ──────────────────────────────────────────────────────── */
-#cpop{
-  position:fixed;inset:0;z-index:9500;
-  background:rgba(2,1,0,.92);backdrop-filter:blur(20px) saturate(1.2);
-  flex-direction:column;opacity:0;pointer-events:none;
-  transition:opacity .35s cubic-bezier(.22,1,.36,1);
-  display:flex;
-}
-#cpop.open{opacity:1;pointer-events:all}
-#cpop.open #cpwrap{transform:scale(1);opacity:1}
-#cpwrap{transform:scale(.94);opacity:0;transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .35s ease;transform-origin:center}
-.cbar{
-  flex-shrink:0;display:flex;align-items:center;justify-content:space-between;
-  padding:12px 24px;background:rgba(8,6,3,.92);border-bottom:1px solid var(--bdr);
-  gap:12px;min-height:54px;
-}
-.cbar-title{
-  font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;
-  color:var(--cu3);letter-spacing:.1em;text-transform:uppercase;
-  flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
-.cbar-r{display:flex;gap:6px;flex-shrink:0}
-.cb2{
-  display:flex;align-items:center;gap:6px;
-  background:rgba(28,22,16,.8);border:1px solid var(--bdr);border-radius:8px;
-  padding:7px 14px;color:var(--text2);font-size:.72rem;font-weight:500;
-  cursor:pointer;transition:all .25s cubic-bezier(.22,1,.36,1);white-space:nowrap;
-}
-.cb2:hover{background:var(--cu4);border-color:var(--cu);color:var(--cu2)}
-.cb2.dl{background:rgba(184,115,51,.1);border-color:var(--bdr2);color:var(--cu2)}
-.cb2.dl:hover{background:rgba(184,115,51,.2);border-color:var(--cu);color:var(--cu3)}
-.cb2.xb{width:36px;height:36px;padding:0;justify-content:center;border-radius:50%;flex-shrink:0}
-.dl-txt{display:inline}
-.cnav{flex:1;display:flex;align-items:stretch;overflow:hidden;position:relative}
-.carr{
-  flex-shrink:0;width:52px;border:none;
-  background:transparent;color:rgba(255,255,255,.2);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .25s,color .25s;
-}
-.carr:hover{background:rgba(184,115,51,.08);color:var(--cu3)}
-.carr:disabled{opacity:.15;cursor:default}
-.cwrap{
-  flex:1;overflow:auto;padding:20px 8px;
-  display:flex;align-items:center;justify-content:center;
-  cursor:zoom-in;-webkit-overflow-scrolling:touch;
-}
-.cwrap.z{cursor:zoom-out;align-items:flex-start;padding-top:20px}
-#cimg{
-  max-width:min(860px,100%);max-height:calc(100vh - 128px);
-  width:auto;height:auto;border-radius:10px;
-  box-shadow:0 24px 80px rgba(0,0,0,.8),0 0 0 1px rgba(184,115,51,.1);
-  transition:opacity .22s ease,transform .4s cubic-bezier(.22,1,.36,1);
-  transform-origin:center top;display:block;object-fit:contain;
-}
-.cwrap.z #cimg{transform:scale(2);transform-origin:top center}
-.cdots{
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  gap:10px;padding:12px 16px;background:rgba(8,6,3,.85);
-  border-top:1px solid var(--bdr);
-}
-.cdot{
-  width:7px;height:7px;border-radius:50%;background:var(--b3);
-  cursor:pointer;border:1px solid var(--bdr);transition:all .25s;
-  touch-action:manipulation;min-width:7px;
-}
-.cdot.active{background:var(--cu);border-color:var(--cu);transform:scale(1.4);box-shadow:0 0 6px rgba(184,115,51,.6)}
-@media(max-width:640px){
-  .cbar{padding:10px 12px;min-height:48px}
-  .cbar-title{font-size:.6rem}
-  .cb2{padding:6px 10px;font-size:.65rem}
-  .dl-txt{display:none}
-  .carr{width:36px}
-  .cwrap{padding:12px 4px}
-  #cimg{max-height:calc(100vh - 116px);border-radius:6px}
-  .cwrap.z #cimg{transform:scale(1.6)}
-}
-@media(max-width:380px){
-  .cb2.zoom-btn{display:none}
-  .carr{width:28px}
-  .cdot{width:6px;height:6px;min-width:6px}
-}
 
 /* ── ANIMATIONS ──────────────────────────────────────────────────────── */
 @keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:none}}
@@ -1343,16 +1235,6 @@ section::before {
     .contact-grid { gap: 32px !important; }
     .ci, .sc { min-height: 80px; }
     .sc { padding: 16px 14px !important; }
-
-    /* Resize certificate viewer controls for touch use without changing its content. */
-    #cpop .cbar { padding: 12px 14px; gap: 8px; }
-    #cpop .cbar-title { font-size: .72rem; letter-spacing: .08em; }
-    #cpop .cbar-r { gap: 6px; }
-    #cpop .cb2 { min-width: 44px; min-height: 44px; padding: 0 10px; }
-    #cpop .dl .dl-txt { display: none; }
-    #cpop .cnav { grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 4px; }
-    #cpop .carr { width: 44px; min-width: 44px; }
-    #cpop .cdots button { width: 28px; height: 28px; }
   }
 </style>
 
@@ -1506,10 +1388,6 @@ section::before {
   @media(max-width:900px) { #projects .pcard:first-child, #projects .pcard:not(:first-child) { grid-column:span 12; min-height:auto; } #projects .pcard { padding:25px 22px !important; } #projects .p-title { min-height:0; } #projects .p-desc { min-height:0; -webkit-line-clamp:4; } #projects .p-stack { min-height:0; margin-top:0; } #projects .p-actions { min-height:0; } }
 
   /* ── CERTIFICATE TILES ── */
-  #certifications .ct { height:112px; display:grid; place-items:center; background:linear-gradient(135deg,rgba(184,115,51,.075),rgba(255,255,255,.018)); border-bottom-color:rgba(255,255,255,.07); }
-  #certifications .ct img, #certifications .ct-ov { display:none; }
-  #certifications .ct::before { content:''; width:39px; height:46px; background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D4956A' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2l7 4v5c0 5-3 8.5-7 11-4-2.5-7-6-7-11V6l7-4Z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E"); opacity:.9; }
-  #certifications .ct::after { content:'Verified credential'; position:absolute; bottom:14px; color:var(--text3); font:500 .56rem/1 'JetBrains Mono',monospace; letter-spacing:.14em; text-transform:uppercase; }
 </style>
 
 <style id="enhanced-contact-styles">
@@ -2143,38 +2021,6 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 </footer>
 <script>try{document.getElementById('ft-year').textContent=new Date().getFullYear();}catch(e){}</script>
 
-<!-- CERT POPUP -->
-<div id="cpop" role="dialog" aria-modal="true" aria-label="Certificate viewer" aria-hidden="true">
-  <div class="cbar">
-    <div class="cbar-title" id="cpop-t">Certificate</div>
-    <div class="cbar-r">
-      <button class="cb2 dl" id="cpop-dl" onclick="dlPDF()" type="button">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span class="dl-txt t" data-en="Download PDF">Download PDF</span>
-      </button>
-      <button type="button" class="cb2 zoom-btn" onclick="toggleZ()" aria-label="Toggle zoom">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
-        Zoom
-      </button>
-      <button type="button" class="cb2 xb" onclick="closeCP()" aria-label="Close certificate viewer">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
-      </button>
-    </div>
-  </div>
-  <div class="cnav">
-    <button type="button" class="carr" id="cp-prv" onclick="cpNav(-1)" aria-label="Previous certificate">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-    <div class="cwrap" id="cpwrap" onclick="toggleZ()">
-      <img id="cimg" src="" alt="Certificate preview">
-    </div>
-    <button type="button" class="carr" id="cp-nxt" onclick="cpNav(1)" aria-label="Next certificate">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-    </button>
-  </div>
-  <div class="cdots" id="cdots"></div>
-</div>
-
 <script>
 // ── CURSOR (blend-mode blob — velocity stretch, hover engulf, magnetic buttons) ──
 (function(){
@@ -2286,82 +2132,11 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
 }); if(!('IntersectionObserver' in window)) document.querySelectorAll('.reveal').forEach(el=>el.classList.add('v'));
 
 
-// ── CERT POPUP ────────────────────────────────────────────────────────────
-const CI=["assets/media/certificates/cert-1.jpg","assets/media/certificates/cert-2.jpg","assets/media/certificates/cert-3.jpg","assets/media/certificates/cert-4.jpg","assets/media/certificates/cert-5.jpg","assets/media/certificates/cert-6.jpg"];
-const CT=["General High School Diploma","English C2 — NOCN Level 3","German A1 Certificate","Military Service Certificate","Java Basic Certificate","University Graduation Certificate"];
-const CF=["/certificates/1_Apolytirion_GEL_Prevezas.pdf","/certificates/2_English_C2_NOCN_Distinction.pdf","/certificates/3_German_A1_State_Certificate.pdf","/certificates/4_Military_Certificate.pdf","/certificates/5_Java_Basic_Certificate.pdf","/certificates/6_University_Graduation_Certificate.pdf"];
-let ci=0;let _cpTO=null;
-function mkDots(){
-  const d=document.getElementById('cdots');d.innerHTML='';
-  CI.forEach((_,i)=>{
-    const dot=document.createElement('button');dot.type='button';dot.className='cdot'+(i===ci?' active':''); dot.setAttribute('aria-label','Go to certificate '+(i+1)); dot.setAttribute('aria-current', i===ci?'true':'false');
-    dot.onclick=()=>cpGo(i);d.appendChild(dot);
-  });
-}
-function cpGo(idx){
-  ci=idx;
-  const img=document.getElementById('cimg');
-  const wrap=document.getElementById('cpwrap');
-  if(wrap) wrap.classList.remove('z');
-  if(_cpTO) clearTimeout(_cpTO);
-  img.style.opacity='0';
-  _cpTO=setTimeout(()=>{img.src=CI[idx];img.style.opacity='1';},140);
-  document.getElementById('cpop-t').textContent=CT[idx];
-  document.getElementById('cpop-dl').dataset.pdf=CF[idx];document.getElementById('cpop-dl').dataset.name=CF[idx].split('/').pop();
-  document.getElementById('cp-prv').disabled=idx===0;
-  document.getElementById('cp-nxt').disabled=idx===CI.length-1;
-  mkDots();
-}
 function _lockScroll(){ window.__scrollLocks=(window.__scrollLocks||0)+1; if(window.__scrollLocks>1) return; window.__cpY=(window.__lenis && typeof window.__lenis.scroll==='number' ? window.__lenis.scroll : window.pageYOffset); if(window.__lenis&&window.__lenis.stop)window.__lenis.stop(); document.documentElement.style.overflow='hidden'; document.body.style.overflow='hidden'; document.body.style.position='fixed'; document.body.style.top=(-window.__cpY)+'px'; document.body.style.left='0';document.body.style.right='0'; }
 function _unlockScroll(){ window.__scrollLocks=Math.max(0,(window.__scrollLocks||1)-1); if(window.__scrollLocks>0) return; document.documentElement.style.overflow=''; document.body.style.overflow=''; document.body.style.position='';document.body.style.top=''; document.body.style.left='';document.body.style.right=''; window.scrollTo(0,window.__cpY||0); if(window.__lenis&&window.__lenis.start)window.__lenis.start(); }
-function openCP(idx){
-  const pop=document.getElementById('cpop'); pop.classList.add('open'); pop.setAttribute('aria-hidden','false');
-  _lockScroll();
-  // move focus into dialog for a11y
-  const closeBtn=pop.querySelector('.xb'); if(closeBtn) closeBtn.focus();
-  const img=document.getElementById('cimg');
-  img.style.transition='none';img.style.opacity='0';
-  setTimeout(()=>{img.style.transition='opacity .25s';},10);
-  cpGo(idx);
-}
-
-/* Touch swipe for cert popup */
-(function(){
-  var cwrap=null,sx=0,sy=0;
-  function getCwrap(){return document.getElementById('cpwrap')}
-  document.addEventListener('touchstart',function(e){
-    var el=e.target.closest('#cpop');
-    if(!el)return;
-    sx=e.touches[0].clientX;sy=e.touches[0].clientY;
-  },{passive:true});
-  document.addEventListener('touchend',function(e){
-    var el=e.target.closest('#cpop');
-    if(!el)return;
-    var dx=e.changedTouches[0].clientX-sx;
-    var dy=e.changedTouches[0].clientY-sy;
-    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>50){
-      if(dx<0)cpNav(1);else cpNav(-1);
-    }
-  },{passive:true});
-})();
-function closeCP(){
-  const pop=document.getElementById('cpop'); pop.classList.remove('open'); pop.setAttribute('aria-hidden','true');
-  const wrap=document.getElementById('cpwrap'); if(wrap) wrap.classList.remove('z');
-  _unlockScroll();
-  // restore focus to trigger if possible
-  const last=document.querySelector('.ccard:focus'); if(last) last.focus();
-}
-function cpNav(d){const n=ci+d;if(n>=0&&n<CI.length)cpGo(n);}
-function toggleZ(){const w=document.getElementById('cpwrap'); if(w) w.classList.toggle('z');}
 document.addEventListener('keydown',e=>{
   if(document.getElementById('mob-menu').classList.contains('open') && e.key==='Escape'){ closeMenu(); return; }
-  if(!document.getElementById('cpop').classList.contains('open'))return;
-  if(e.key==='Escape')closeCP();
-  if(e.key==='ArrowLeft')cpNav(-1);
-  if(e.key==='ArrowRight')cpNav(1);
 });
-
-mkDots();
 
 // ── SMOOTH NAV SCROLL ─────────────────────────────────────────────────────
 function smoothGo(href){
@@ -2385,27 +2160,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// ── CERT THUMBNAIL ON TAP (mobile) ────────────────────────────────────────
-document.querySelectorAll('.ccard').forEach(card=>{
-  card.setAttribute('role','button'); card.setAttribute('tabindex','0');
-  card.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.click(); }});
-  card.addEventListener('click',e=>{
-    // On touch: first tap shows preview, second opens popup
-    const isMobile=!window.matchMedia('(hover:hover)').matches;
-    if(isMobile){
-      if(!card.classList.contains('preview-open')){
-        document.querySelectorAll('.ccard').forEach(c=>c.classList.remove('preview-open'));
-        card.classList.add('preview-open');
-        e.stopPropagation();
-        return;
-      }
-    }
-  });
-});
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.ccard'))
-    document.querySelectorAll('.ccard').forEach(c=>c.classList.remove('preview-open'));
-});
 </script>
 
 <script>
@@ -2429,27 +2183,7 @@ function closeMenu(){
   menu.setAttribute('aria-hidden','true');
   if(wasOpen) _unlockScroll();
 }
-
-function dlPDF(){
-  var btn=document.getElementById('cpop-dl');
-  var url=btn.dataset.pdf;
-  var name=btn.dataset.name||'certificate.pdf';
-  if(!url||url==='#')return;
-  btn.disabled=true;
-  var origHTML=btn.innerHTML;
-  btn.innerHTML='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Downloading...</span>';
-  fetch(url)
-    .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.blob();})
-    .then(function(blob){
-      var a=document.createElement('a');
-      a.href=URL.createObjectURL(blob);
-      a.download=name;
-      document.body.appendChild(a);a.click();
-      setTimeout(function(){URL.revokeObjectURL(a.href);document.body.removeChild(a);},1000);
-    })
-    .catch(function(){window.open(url,'_blank');})
-    .finally(function(){btn.disabled=false;btn.innerHTML=origHTML;});
-}</script>
+</script>
 
 
 
