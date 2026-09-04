@@ -1316,7 +1316,7 @@ section::before {
   @media(max-width:640px) { .section-heading { margin-bottom:30px; } #skills .tech-intro { margin:12px 0 28px; font-size:.88rem; } }
 
   /* Continuous top-bar morph: every visual value is driven from a single smoothed scroll progress value. */
-  .topbar--adaptive { --fluid-progress:0; transition:none !important; will-change:top,width,height,opacity,background-color,border-color,box-shadow,backdrop-filter; }
+  .topbar--adaptive { --fluid-progress:0; transition:none !important; will-change:top,width,height,opacity,background-color,border-color,box-shadow,backdrop-filter; contain:layout style; }
   .topbar--adaptive .nav-links a span { display:inline-block; width:var(--fluid-index-width, 0px); margin-right:var(--fluid-index-gap, 0px); overflow:hidden; white-space:nowrap; opacity:var(--fluid-progress); transform:translate3d(var(--fluid-index-shift, -6px),0,0); transition:none !important; }
   .topbar--adaptive .nav-links a { transition:none !important; }
   .topbar--adaptive .nav-logo, .topbar--adaptive .nav-logo-img, .topbar--adaptive .nav-contact { transition:none !important; }
@@ -2611,6 +2611,7 @@ function updateScrollProgress(progress){
   var target = 0;
   var frame = 0;
   var lastTarget = -1;
+  var paintFrame = 0;
   function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
   function lerp(from, to, amount) { return from + (to - from) * amount; }
   function calculateTarget() {
@@ -2631,9 +2632,15 @@ function updateScrollProgress(progress){
     adaptiveNav.style.opacity = lerp(1, window.innerWidth <= 900 ? .82 : .88, value).toFixed(4);
     adaptiveNav.style.backgroundColor = 'rgba(8,6,4,' + lerp(.82, window.innerWidth <= 900 ? .50 : .58, value).toFixed(4) + ')';
     adaptiveNav.style.borderColor = 'rgba(232,201,154,' + lerp(.17, .12, value).toFixed(4) + ')';
-    adaptiveNav.style.boxShadow = '0 ' + lerp(16, 8, value).toFixed(1) + 'px ' + lerp(54, 32, value).toFixed(1) + 'px rgba(0,0,0,' + lerp(.34, .15, value).toFixed(3) + ')';
-    adaptiveNav.style.backdropFilter = 'blur(' + lerp(18, 11, value).toFixed(2) + 'px) saturate(' + lerp(130, 112, value).toFixed(1) + '%)';
-    adaptiveNav.style.webkitBackdropFilter = adaptiveNav.style.backdropFilter;
+    // box-shadow and backdrop-filter are the most expensive properties here (blur
+    // recompute, not just compositing) — write them at half the rAF rate. The blur
+    // amount changes slowly enough that skipping every other frame is invisible.
+    paintFrame++;
+    if (paintFrame % 2 === 0 || value === 0 || value === 1) {
+      adaptiveNav.style.boxShadow = '0 ' + lerp(16, 8, value).toFixed(1) + 'px ' + lerp(54, 32, value).toFixed(1) + 'px rgba(0,0,0,' + lerp(.34, .15, value).toFixed(3) + ')';
+      adaptiveNav.style.backdropFilter = 'blur(' + lerp(18, 11, value).toFixed(2) + 'px) saturate(' + lerp(130, 112, value).toFixed(1) + '%)';
+      adaptiveNav.style.webkitBackdropFilter = adaptiveNav.style.backdropFilter;
+    }
     adaptiveNav.style.setProperty('--fluid-progress', value.toFixed(4));
     adaptiveNav.style.setProperty('--fluid-index-width', (17 * value).toFixed(2) + 'px');
     adaptiveNav.style.setProperty('--fluid-index-gap', (8 * value).toFixed(2) + 'px');
@@ -2812,7 +2819,10 @@ function updateScrollProgress(progress){
     var vh = window.innerHeight;
     state.forEach(function(s){
       var rect = s.parent.getBoundingClientRect();
-      var progress = (vh - rect.top) / (vh + rect.height);
+      // Clamped to [0,1]: unclamped, target grows without bound the further the
+      // parent scrolls out of view, which meant this rAF loop never settled back
+      // to 0 and kept computing/writing every frame for the rest of the page visit.
+      var progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh + rect.height)));
       var target = (progress - 0.5) * s.coef * s.dir * 10;
       s.current += (target - s.current) * 0.12;
       s.el.style.transform = s.axis === 'h'
