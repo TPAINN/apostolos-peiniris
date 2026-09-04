@@ -1626,7 +1626,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 </nav>
 
 <!-- HERO -->
-<section id="hero" data-st-01="parallax" data-anim-parallax-parent data-anim-parallax-smooth="12">
+<section id="hero" data-st-01="parallax" data-st-y="50" data-st-opacity="0.28" data-anim-parallax-parent data-anim-parallax-smooth="12">
   <div class="hero-shader" id="heroShader" data-anim-parallax data-anim-parallax-direction="1" data-anim-parallax-coefficient="7">
     <video 
       autoplay 
@@ -1680,7 +1680,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 </section>
 
 <!-- VERIFIED TECHNOLOGY STACK -->
-<section id="skills" class="tech-section" aria-labelledby="tech-heading">
+<section id="skills" class="tech-section" aria-labelledby="tech-heading" data-st-01="parallax" data-st-y="28">
   <div class="w tech-heading-wrap section-header">
     <p class="ey section-overline">Tech Stack</p>
     <h2 id="tech-heading" class="sec-t reveal section-heading">Technical <em>Competencies</em></h2>
@@ -1949,7 +1949,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 </section>
 
 <!-- CERTIFICATIONS -->
-<section id="certifications">
+<section id="certifications" data-st-01="reveal" data-st-y="200" data-st-opacity="0.35">
 <div class="decor-glow decor-glow--certifications" data-parallax-speed="-0.09" aria-hidden="true"></div>
 <div class="w">
   <p class="ey section-overline">Qualifications</p>
@@ -2607,8 +2607,8 @@ function updateScrollProgress(progress){
   var contact = adaptiveNav.querySelector('.nav-contact');
   var links = Array.prototype.slice.call(adaptiveNav.querySelectorAll('.nav-links a'));
   var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var progress = 0;
-  var target = 0;
+  var progress = 1;
+  var target = 1;
   var frame = 0;
   var lastTarget = -1;
   var paintFrame = 0;
@@ -2617,7 +2617,9 @@ function updateScrollProgress(progress){
   function calculateTarget() {
     var begin = hero.offsetHeight * .58;
     var end = Math.max(begin + 1, hero.offsetHeight - Math.min(54, window.innerHeight * .065));
-    return clamp((window.scrollY - begin) / (end - begin), 0, 1);
+    // Inverted: nav starts expanded/open at the top of the page and closes down
+    // to the compact pill as you scroll past the hero (opposite of the original).
+    return 1 - clamp((window.scrollY - begin) / (end - begin), 0, 1);
   }
   function paint(value) {
     var compactWidth = window.innerWidth <= 900 ? window.innerWidth - 24 : Math.min(920, window.innerWidth - 36);
