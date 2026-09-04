@@ -7,8 +7,14 @@
 <link rel="apple-touch-icon" href="/favicon.png">
 <title>Apostolos Peiniris | Final Interaction Preview</title>
 <meta name="description" content="Apostolos Peiniris — full-stack developer from Greece. React, Java/Spring Boot, PostgreSQL. Web & mobile apps, portfolio and contact.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Apostolos Peiniris">
+<meta name="theme-color" content="#050402">
 <link rel="canonical" href="https://apostolos-peiniris.vercel.app/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="el_GR">
+<meta property="og:site_name" content="Apostolos Peiniris">
 <meta property="og:title" content="Apostolos Peiniris | Full-Stack Developer">
 <meta property="og:description" content="React · Java/Spring Boot · PostgreSQL — web & mobile apps that ship. Portfolio, projects and contact.">
 <meta property="og:url" content="https://apostolos-peiniris.vercel.app/">
@@ -30,6 +36,7 @@
   "address": { "@type": "PostalAddress", "addressLocality": "Preveza", "addressCountry": "GR" },
   "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Western Macedonia" },
   "knowsAbout": ["React", "Java", "Spring Boot", "PostgreSQL", "JavaScript", "Node.js"],
+  "knowsLanguage": ["en", "el"],
   "sameAs": [
     "https://github.com/TPAINN",
     "https://www.linkedin.com/in/apostolos-peiniris-a02a961a5/",
@@ -153,6 +160,22 @@ nav.solid{
   display:grid;grid-template-columns:1fr auto;align-items:center;gap:60px;
   width:100%;
 }
+.lang-switch{
+  position:absolute;top:clamp(74px,11vh,96px);left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;gap:2px;padding:3px;
+  background:rgba(18,16,11,.7);border:1px solid var(--bdr);border-radius:100px;
+  backdrop-filter:blur(12px) saturate(1.3);-webkit-backdrop-filter:blur(12px) saturate(1.3);
+  opacity:0;animation:fadeUp .6s .1s forwards;
+}
+.lang-btn{
+  font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.08em;
+  color:var(--text3);background:transparent;border:none;border-radius:100px;
+  padding:6px 14px;cursor:pointer;transition:color .25s,background .25s;
+}
+.lang-btn:hover{color:var(--cu3)}
+.lang-btn.is-active{background:var(--cu4);color:var(--cu3);box-shadow:inset 0 0 0 1px var(--bdr2)}
+@media(max-width:900px){ .lang-switch{top:clamp(64px,9vh,80px)} }
+@media(prefers-reduced-motion:reduce){ .lang-switch{animation:none;opacity:1} }
 .hero-eyebrow{
   font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:500;
   color:var(--cu);letter-spacing:.2em;text-transform:uppercase;
@@ -1612,12 +1635,12 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 <div id="mob-menu" aria-hidden="true">
   <button type="button" class="mob-close" onclick="closeMenu()" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
   <ul>
-    <li><a href="#skills" onclick="closeMenu()" class="t" data-en="Skills">Skills</a></li>
-    <li><a href="#projects" onclick="closeMenu()" class="t" data-en="Projects">Projects</a></li>
-    <li><a href="#education" onclick="closeMenu()" class="t" data-en="Education & History">Education &amp; History</a></li>
-    <li><a href="#experience" onclick="closeMenu()" class="t" data-en="Experience">Experience</a></li>
-    <li><a href="#certifications" onclick="closeMenu()" class="t" data-en="Certifications">Certifications</a></li>
-    <li><a href="#contact" onclick="closeMenu()" class="t" data-en="Contact">Contact</a></li>
+    <li><a href="#skills" onclick="closeMenu()" class="t" data-en="Skills" data-gr="Δεξιότητες">Skills</a></li>
+    <li><a href="#projects" onclick="closeMenu()" class="t" data-en="Projects" data-gr="Έργα">Projects</a></li>
+    <li><a href="#education" onclick="closeMenu()" class="t" data-en="Education & History" data-gr="Εκπαίδευση & Ιστορικό">Education &amp; History</a></li>
+    <li><a href="#experience" onclick="closeMenu()" class="t" data-en="Experience" data-gr="Εμπειρία">Experience</a></li>
+    <li><a href="#certifications" onclick="closeMenu()" class="t" data-en="Certifications" data-gr="Πιστοποιητικά">Certifications</a></li>
+    <li><a href="#contact" onclick="closeMenu()" class="t" data-en="Contact" data-gr="Επικοινωνία">Contact</a></li>
   </ul>
 </div>
 
@@ -1630,13 +1653,13 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
   <a href="#hero" class="nav-logo" aria-label="Apostolos Peiniris"><img src="favicon.png" alt="Apostolos Peiniris AP Logo" class="nav-logo-img" width="38" height="38"></a>
   <div class="nav-core">
   <ul class="nav-links" aria-label="Primary navigation">
-    <li><a href="#skills" class="t" data-en="Skills"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.2"></rect><rect x="14" y="3" width="7" height="7" rx="1.2"></rect><rect x="3" y="14" width="7" height="7" rx="1.2"></rect><rect x="14" y="14" width="7" height="7" rx="1.2"></rect></svg></span>Skills</a></li>
-    <li><a href="#projects" class="t" data-en="Projects"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4-9-4Z"></path><path d="m3 12 9 4 9-4"></path><path d="m3 17 9 4 9-4"></path></svg></span>Projects</a></li>
-    <li><a href="#education" class="t" data-en="Education & History"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 10 10-5 10 5-10 5-10-5Z"></path><path d="M6 12.5V17c3 2 9 2 12 0v-4.5"></path><path d="M22 10v6"></path></svg></span>Education</a></li>
-    <li><a href="#experience" class="t" data-en="Experience"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 12h18"></path><path d="M10 12v2h4v-2"></path></svg></span>Experience</a></li>
-    <li><a href="#certifications" class="t" data-en="Certifications"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"></circle><path d="m8.5 12.2-1.4 8.3 4.9-2.8 4.9 2.8-1.4-8.3"></path><path d="m10.2 8 1.2 1.2 2.4-2.4"></path></svg></span>Certificates</a></li>
+    <li><a href="#skills" class="t" data-en="Skills" data-gr="Δεξιότητες"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.2"></rect><rect x="14" y="3" width="7" height="7" rx="1.2"></rect><rect x="3" y="14" width="7" height="7" rx="1.2"></rect><rect x="14" y="14" width="7" height="7" rx="1.2"></rect></svg></span>Skills</a></li>
+    <li><a href="#projects" class="t" data-en="Projects" data-gr="Έργα"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 7 9-4 9 4-9 4-9-4Z"></path><path d="m3 12 9 4 9-4"></path><path d="m3 17 9 4 9-4"></path></svg></span>Projects</a></li>
+    <li><a href="#education" class="t" data-en="Education & History" data-gr="Εκπαίδευση & Ιστορικό"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 10 10-5 10 5-10 5-10-5Z"></path><path d="M6 12.5V17c3 2 9 2 12 0v-4.5"></path><path d="M22 10v6"></path></svg></span>Education</a></li>
+    <li><a href="#experience" class="t" data-en="Experience" data-gr="Εμπειρία"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M3 12h18"></path><path d="M10 12v2h4v-2"></path></svg></span>Experience</a></li>
+    <li><a href="#certifications" class="t" data-en="Certifications" data-gr="Πιστοποιητικά"><span class="nav-icon-slot"><svg class="nav-section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"></circle><path d="m8.5 12.2-1.4 8.3 4.9-2.8 4.9 2.8-1.4-8.3"></path><path d="m10.2 8 1.2 1.2 2.4-2.4"></path></svg></span>Certificates</a></li>
   </ul></div>
-  <a href="#contact" class="nav-contact"><span>Contact</span><i aria-hidden="true">→</i></a>
+  <a href="#contact" class="nav-contact"><span class="t" data-en="Contact" data-gr="Επικοινωνία">Contact</span><i aria-hidden="true">→</i></a>
   <button type="button" class="nav-ham" id="navHam" aria-label="Menu" aria-expanded="false" aria-controls="mob-menu" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
@@ -1657,28 +1680,32 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
     </video>
   </div>
   <div class="hero-bg" id="heroBg"></div>
+  <div class="lang-switch" role="group" aria-label="Language / Γλώσσα">
+    <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" class="lang-btn" data-lang="gr" aria-pressed="false">GR</button>
+  </div>
   <div class="w" style="width:100%">
     <div class="hero-content">
     <div>
-      <div class="hero-eyebrow t" data-en="Full-Stack Developer">Full-Stack Developer</div>
+      <div class="hero-eyebrow t" data-en="Full-Stack Developer" data-gr="Προγραμματιστής Full-Stack">Full-Stack Developer</div>
       <h1 class="hero-name">
-        <span class="t" data-en="Apostolos">Apostolos</span><span class="hero-lastname t" data-en="Peiniris">Peiniris</span>
+        <span class="t" data-en="Apostolos" data-gr="Απόστολος">Apostolos</span><span class="hero-lastname t" data-en="Peiniris" data-gr="Πεϊνίρης">Peiniris</span>
       </h1>
-      <div class="hero-subtitle t" data-en="React · Java/Spring Boot · PostgreSQL">
+      <div class="hero-subtitle t" data-en="React · Java/Spring Boot · PostgreSQL" data-gr="React · Java/Spring Boot · PostgreSQL">
         React · Java/Spring Boot · PostgreSQL
       </div>
       <p class="hero-desc t"
-         data-en="Hi, I'm Apostolos — a Computer Science graduate from the University of Western Macedonia. I build full-stack web and mobile applications with React, Spring Boot, and PostgreSQL, with a focus on integrating meaningful AI features rather than surface-level chat interfaces."
+         data-en="Hi, I'm Apostolos — a Computer Science graduate from the University of Western Macedonia. I build full-stack web and mobile applications with React, Spring Boot, and PostgreSQL, with a focus on integrating meaningful AI features rather than surface-level chat interfaces." data-gr="Γεια σας, είμαι ο Απόστολος — πτυχιούχος Πληροφορικής από το Πανεπιστήμιο Δυτικής Μακεδονίας. Δημιουργώ full-stack web και mobile εφαρμογές με React, Spring Boot και PostgreSQL, με έμφαση στην ενσωμάτωση ουσιαστικών λειτουργιών AI αντί για επιφανειακά chat interfaces."
         >
         Hi, I'm Apostolos — a Computer Science graduate from the University of Western Macedonia. I build full-stack web and mobile applications with React, Spring Boot, and PostgreSQL, with a focus on integrating meaningful AI features rather than surface-level chat interfaces.
       </p>
       <div class="hero-ctas">
-        <a class="btn-cu" href="#contact"><span class="t" data-en="Get in Touch">Get in Touch</span> <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
-        <a class="btn-ou" id="cvBtn" href="cv/CV_Apostolos_Peiniris_EN.pdf" download><span class="t" data-en="Download CV">Download CV</span> <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span></a>
+        <a class="btn-cu" href="#contact"><span class="t" data-en="Get in Touch" data-gr="Επικοινωνήστε">Get in Touch</span> <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+        <a class="btn-ou" id="cvBtn" href="cv/CV_Apostolos_Peiniris_EN.pdf" download><span class="t" data-en="Download CV" data-gr="Λήψη Βιογραφικού">Download CV</span> <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span></a>
         <a class="btn-ou" href="https://github.com/TPAINN" target="_blank" rel="noopener noreferrer"><span>GitHub</span></a>
       </div>
       <div class="hero-soc">
-        <span class="lbl t" data-en="Follow me">Follow me</span>
+        <span class="lbl t" data-en="Follow me" data-gr="Ακολουθήστε με">Follow me</span>
         <a class="soc-i gh" href="https://github.com/TPAINN" target="_blank" rel="noopener noreferrer" aria-label="Visit Apostolos Peiniris on GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
         <a class="soc-i" href="https://www.linkedin.com/in/apostolos-peiniris-a02a961a5/" target="_blank" rel="noopener noreferrer" aria-label="Visit Apostolos Peiniris on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
         <a class="soc-i" href="https://www.instagram.com/t.peinnn/" target="_blank" rel="noopener noreferrer" aria-label="Visit Apostolos Peiniris on Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
@@ -1691,15 +1718,15 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
     </div>
   </div>
   </div>
-  <div class="scroll-ind"><span class="si-text t" data-en="Scroll">Scroll</span><div class="si-line"></div></div>
+  <div class="scroll-ind"><span class="si-text t" data-en="Scroll" data-gr="Κύλιση">Scroll</span><div class="si-line"></div></div>
 </section>
 
 <!-- VERIFIED TECHNOLOGY STACK -->
 <section id="skills" class="tech-section" aria-labelledby="tech-heading" data-st-01="parallax" data-st-y="28">
   <div class="w tech-heading-wrap section-header">
-    <p class="ey section-overline">Tech Stack</p>
-    <h2 id="tech-heading" class="sec-t reveal section-heading">Technical <em>Competencies</em></h2>
-    <p class="tech-intro">A focused set of technologies I use across web and backend work.</p>
+    <p class="ey section-overline t" data-en="Tech Stack" data-gr="Τεχνολογίες">Tech Stack</p>
+    <h2 id="tech-heading" class="sec-t reveal section-heading"><span class="t" data-en="Technical " data-gr="Τεχνικές ">Technical </span><em class="t" data-en="Competencies" data-gr="Ικανότητες">Competencies</em></h2>
+    <p class="tech-intro t" data-en="A focused set of technologies I use across web and backend work." data-gr="Ένα εστιασμένο σύνολο τεχνολογιών που χρησιμοποιώ σε web και backend έργα.">A focused set of technologies I use across web and backend work.</p>
   </div>
   <div class="tech-rail" aria-label="Core technology stack">
     <ul class="tech-track">
@@ -1729,8 +1756,8 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 <section id="projects" data-st-01="parallax" data-st-y="28" data-st-opacity="0.25">
 <div class="decor-glow decor-glow--projects" data-parallax-speed="0.12" aria-hidden="true"></div>
 <div class="w">
-  <p class="ey section-overline">Selected Work</p>
-  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Featured ">Featured </span><em class="t" data-en="Projects">Projects</em></h2>
+  <p class="ey section-overline t" data-en="Selected Work" data-gr="Επιλεγμένη Δουλειά">Selected Work</p>
+  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Featured " data-gr="Επιλεγμένα ">Featured </span><em class="t" data-en="Projects" data-gr="Έργα">Projects</em></h2>
   <div class="bento">
 
         <!-- Project 1: Smart Grocery Hub -->
@@ -1740,13 +1767,13 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
           <div class="p-icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#e09858"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           </div>
-          <span class="p-badge live">● Live Production</span>
+          <span class="p-badge live t" data-en="● Live Production" data-gr="● Σε Λειτουργία">● Live Production</span>
         </div>
         <h3 class="p-title"><a class="vt-title" href="case-study/">Smart Grocery Hub (Καλαθάκι)</a></h3>
-        <p class="p-desc t" data-en="Full-stack price-comparison platform comparing live catalogue prices across 8 Greek supermarket chains. Features autonomous Puppeteer web scrapers, AI meal generation, barcode scanner with Nutri-Score, synchronized collaborative carts via Socket.IO, and Leaflet smart delivery routes.">
+        <p class="p-desc t" data-en="Full-stack price-comparison platform comparing live catalogue prices across 8 Greek supermarket chains. Features autonomous Puppeteer web scrapers, AI meal generation, barcode scanner with Nutri-Score, synchronized collaborative carts via Socket.IO, and Leaflet smart delivery routes." data-gr="Full-stack πλατφόρμα σύγκρισης τιμών που συγκρίνει live τιμές καταλόγου σε 8 ελληνικές αλυσίδες σουπερμάρκετ. Διαθέτει αυτόνομα Puppeteer web scrapers, δημιουργία γευμάτων με AI, σαρωτή barcode με Nutri-Score, συγχρονισμένα συνεργατικά καλάθια μέσω Socket.IO, και έξυπνες διαδρομές παράδοσης με Leaflet.">
           Full-stack price-comparison platform comparing live catalogue prices across 8 Greek supermarket chains. Features autonomous Puppeteer web scrapers, AI meal generation, barcode scanner with Nutri-Score, synchronized collaborative carts via Socket.IO, and Leaflet smart delivery routes.
         </p>
-        <div class="p-highlight">
+        <div class="p-highlight t" data-en="⚡ Automated Ingestion · AI Nutri-Score · Real-Time Socket.IO" data-gr="⚡ Αυτόματη Συλλογή Δεδομένων · AI Nutri-Score · Real-Time Socket.IO">
           ⚡ Automated Ingestion · AI Nutri-Score · Real-Time Socket.IO
         </div>
         <div class="p-stack">
@@ -1770,10 +1797,10 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
           <div class="p-icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#e09858"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10M12 22a10 10 0 0 1-10-10"/></svg>
           </div>
-          <span class="p-badge feat">Pre-Launch</span>
+          <span class="p-badge feat t" data-en="Pre-Launch" data-gr="Προ-Κυκλοφορία">Pre-Launch</span>
         </div>
         <h3 class="p-title"><a href="https://github.com/TPAINN/vortex-site" target="_blank" rel="noopener noreferrer">Vortex</a></h3>
-        <p class="p-desc t" data-en="Pre-launch marketing site for Vortex, an upcoming Android app. Preloader curtain-lift reveal, custom cursor, ambient animated background, and an email waitlist across hero, how-it-works, showcase, stats, platforms, and FAQ sections.">
+        <p class="p-desc t" data-en="Pre-launch marketing site for Vortex, an upcoming Android app. Preloader curtain-lift reveal, custom cursor, ambient animated background, and an email waitlist across hero, how-it-works, showcase, stats, platforms, and FAQ sections." data-gr="Ιστοσελίδα προ-κυκλοφορίας για το Vortex, μια επερχόμενη Android εφαρμογή. Preloader με curtain-lift reveal, custom δρομέας, ambient κινούμενο φόντο, και λίστα αναμονής email σε ενότητες hero, how-it-works, showcase, stats, platforms και FAQ.">
           Pre-launch marketing site for Vortex, an upcoming Android app. Preloader curtain-lift reveal, custom cursor, ambient animated background, and an email waitlist across hero, how-it-works, showcase, stats, platforms, and FAQ sections.
         </p>
         <div class="p-stack">
@@ -1797,10 +1824,10 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
           <div class="p-icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#e09858"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </div>
-          <span class="p-badge feat">Creative Web Audio</span>
+          <span class="p-badge feat t" data-en="Creative Web Audio" data-gr="Δημιουργικό Web Audio">Creative Web Audio</span>
         </div>
         <h3 class="p-title"><a href="https://github.com/TPAINN/aurora-player" target="_blank" rel="noopener noreferrer">Aurora Player</a></h3>
-        <p class="p-desc t" data-en="Premium web music player with word-level synchronized karaoke lyrics, beat-reactive Web Audio visuals, and seamless YouTube API integration.">
+        <p class="p-desc t" data-en="Premium web music player with word-level synchronized karaoke lyrics, beat-reactive Web Audio visuals, and seamless YouTube API integration." data-gr="Premium web music player με word-level συγχρονισμένους στίχους karaoke, beat-reactive Web Audio visuals, και άψογη ενσωμάτωση YouTube API.">
           Premium web music player with word-level synchronized karaoke lyrics, beat-reactive Web Audio visuals, and seamless YouTube API integration.
         </p>
         <div class="p-stack">
@@ -1824,10 +1851,10 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
           <div class="p-icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#e09858"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
           </div>
-          <span class="p-badge feat">Real-Time API</span>
+          <span class="p-badge feat t" data-en="Real-Time API" data-gr="API Πραγματικού Χρόνου">Real-Time API</span>
         </div>
         <h3 class="p-title"><a href="https://github.com/TPAINN/Weather-App" target="_blank" rel="noopener noreferrer">Weather Dashboard</a></h3>
-        <p class="p-desc t" data-en="Real-time forecasting dashboard tracking hourly precipitation, UV index, dynamic radar charts, and automatic geolocation detection.">
+        <p class="p-desc t" data-en="Real-time forecasting dashboard tracking hourly precipitation, UV index, dynamic radar charts, and automatic geolocation detection." data-gr="Dashboard πρόγνωσης καιρού σε πραγματικό χρόνο που παρακολουθεί ωριαία βροχόπτωση, δείκτη UV, δυναμικά radar charts, και αυτόματο εντοπισμό τοποθεσίας.">
           Real-time forecasting dashboard tracking hourly precipitation, UV index, dynamic radar charts, and automatic geolocation detection.
         </p>
         <div class="p-stack">
@@ -1851,10 +1878,10 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
           <div class="p-icon-box">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" color="#e09858"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
           </div>
-          <span class="p-badge feat">React 19 Core</span>
+          <span class="p-badge feat t" data-en="React 19 Core" data-gr="Πυρήνας React 19">React 19 Core</span>
         </div>
         <h3 class="p-title"><a href="https://github.com/TPAINN/calculator" target="_blank" rel="noopener noreferrer">Calculator</a></h3>
-        <p class="p-desc t" data-en="Minimal, clean arithmetic calculator with full physical keyboard event mapping, history log, and responsive dark glass feedback.">
+        <p class="p-desc t" data-en="Minimal, clean arithmetic calculator with full physical keyboard event mapping, history log, and responsive dark glass feedback." data-gr="Μινιμαλιστική, καθαρή αριθμομηχανή με πλήρη υποστήριξη φυσικού πληκτρολογίου, ιστορικό υπολογισμών, και responsive dark glass εμφάνιση.">
           Minimal, clean arithmetic calculator with full physical keyboard event mapping, history log, and responsive dark glass feedback.
         </p>
         <div class="p-stack">
@@ -1878,12 +1905,12 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 <!-- LANGUAGES -->
 <section id="languages" data-st-01="parallax" data-st-y="24" data-st-opacity="0.22">
 <div class="w">
-  <p class="ey section-overline">Languages</p>
-  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Language ">Language </span><em class="t" data-en="Proficiency">Proficiency</em></h2>
+  <p class="ey section-overline t" data-en="Languages" data-gr="Γλώσσες">Languages</p>
+  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Language " data-gr="Γνώση ">Language </span><em class="t" data-en="Proficiency" data-gr="Γλωσσών">Proficiency</em></h2>
   <div class="lg reveal">
-    <div class="lcard"><div class="lf" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 27 18" xmlns="http://www.w3.org/2000/svg"><rect width="27" height="18" fill="#0D5EAF"/><path d="M0 3h27M0 7h27M0 11h27M0 15h27" stroke="#fff" stroke-width="2"/><rect width="10" height="10" fill="#0D5EAF"/><path d="M5 0v10M0 5h10" stroke="#fff" stroke-width="2"/></svg></div><div><div class="ln t" data-en="Greek">Greek</div><div class="ll t" data-en="Native Speaker">Native Speaker</div></div></div>
-    <div class="lcard"><div class="lf" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 60 36M60 0 0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 60 36M60 0 0 36" stroke="#C8102E" stroke-width="3"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="12"/><path d="M30 0v36M0 18h60" stroke="#C8102E" stroke-width="7"/></svg></div><div><div class="ln t" data-en="English">English</div><div class="ll t" data-en="Proficient User">Proficient User</div><span class="lc">C2 — NOCN Distinction</span></div></div>
-    <div class="lcard"><div class="lf" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="6" fill="#000"/><rect y="6" width="30" height="6" fill="#DD0000"/><rect y="12" width="30" height="6" fill="#FFCE00"/></svg></div><div><div class="ln t" data-en="German">German</div><div class="ll t" data-en="Basic User">Basic User</div><span class="lc t" data-en="A1 — State Cert.">A1 — State Cert.</span></div></div>
+    <div class="lcard"><div class="lf" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 27 18" xmlns="http://www.w3.org/2000/svg"><rect width="27" height="18" fill="#0D5EAF"/><path d="M0 3h27M0 7h27M0 11h27M0 15h27" stroke="#fff" stroke-width="2"/><rect width="10" height="10" fill="#0D5EAF"/><path d="M5 0v10M0 5h10" stroke="#fff" stroke-width="2"/></svg></div><div><div class="ln t" data-en="Greek" data-gr="Ελληνικά">Greek</div><div class="ll t" data-en="Native Speaker" data-gr="Μητρική Γλώσσα">Native Speaker</div></div></div>
+    <div class="lcard"><div class="lf" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="36" fill="#012169"/><path d="M0 0 60 36M60 0 0 36" stroke="#fff" stroke-width="7"/><path d="M0 0 60 36M60 0 0 36" stroke="#C8102E" stroke-width="3"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="12"/><path d="M30 0v36M0 18h60" stroke="#C8102E" stroke-width="7"/></svg></div><div><div class="ln t" data-en="English" data-gr="Αγγλικά">English</div><div class="ll t" data-en="Proficient User" data-gr="Άριστη Χρήση">Proficient User</div><span class="lc">C2 — NOCN Distinction</span></div></div>
+    <div class="lcard"><div class="lf" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 30 18" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="6" fill="#000"/><rect y="6" width="30" height="6" fill="#DD0000"/><rect y="12" width="30" height="6" fill="#FFCE00"/></svg></div><div><div class="ln t" data-en="German" data-gr="Γερμανικά">German</div><div class="ll t" data-en="Basic User" data-gr="Βασική Χρήση">Basic User</div><span class="lc t" data-en="A1 — State Cert." data-gr="A1 — Κρατικό Πιστοποιητικό">A1 — State Cert.</span></div></div>
   </div>
 </div>
 </section>
@@ -1891,35 +1918,35 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 <!-- EDUCATION -->
 <section id="education" data-st-01="parallax" data-st-y="28" data-st-opacity="0.25">
 <div class="w">
-  <p class="ey section-overline">Academic History</p>
-  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Education ">Education </span><em>&amp;</em> <span class="t" data-en="History">History</span></h2>
+  <p class="ey section-overline t" data-en="Academic History" data-gr="Ακαδημαϊκό Ιστορικό">Academic History</p>
+  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Education " data-gr="Εκπαίδευση ">Education </span><em>&amp;</em> <span class="t" data-en="History" data-gr="Ιστορικό">History</span></h2>
   <div class="tl">
     <div class="ti reveal fl">
       <div class="ty">2020 → 2026</div>
       <div class="tc">
-        <h3 class="t" data-en="B.Sc. Computer Science (Informatics)">B.Sc. Computer Science (Informatics)</h3>
-        <div class="inst t" data-en="University of Western Macedonia — Kastoria">University of Western Macedonia — Kastoria</div>
-        <div class="note t" data-en="50/50 courses · 270 ECTS · Final Grade 6.61/10 — Very Good">50/50 courses · 270 ECTS · Final Grade 6.61/10 — Very Good</div>
-        <span class="bdg t" data-en="Degree Awarded: June 2026">Degree Awarded: June 2026</span>
-        <span class="bdg t" data-en="Oath Ceremony: Winter 2026–2027">Oath Ceremony: Winter 2026–2027</span>
+        <h3 class="t" data-en="B.Sc. Computer Science (Informatics)" data-gr="Πτυχίο Πληροφορικής (B.Sc.)">B.Sc. Computer Science (Informatics)</h3>
+        <div class="inst t" data-en="University of Western Macedonia — Kastoria" data-gr="Πανεπιστήμιο Δυτικής Μακεδονίας — Καστοριά">University of Western Macedonia — Kastoria</div>
+        <div class="note t" data-en="50/50 courses · 270 ECTS · Final Grade 6.61/10 — Very Good" data-gr="50/50 μαθήματα · 270 ECTS · Τελικός Βαθμός 6.61/10 — Λίαν Καλώς">50/50 courses · 270 ECTS · Final Grade 6.61/10 — Very Good</div>
+        <span class="bdg t" data-en="Degree Awarded: June 2026" data-gr="Απονομή Πτυχίου: Ιούνιος 2026">Degree Awarded: June 2026</span>
+        <span class="bdg t" data-en="Oath Ceremony: Winter 2026–2027" data-gr="Ορκωμοσία: Χειμώνας 2026–2027">Oath Ceremony: Winter 2026–2027</span>
       </div>
     </div>
     <div class="ti reveal fl">
       <div class="ty">2017 → 2020</div>
       <div class="tc">
-        <h3 class="t" data-en="General High School Diploma">General High School Diploma</h3>
-        <div class="inst t" data-en="1st General Lyceum of Preveza — STEM">1st General Lyceum of Preveza — STEM</div>
-        <div class="note t" data-en="Mathematics 18.5 · Computer Science 19.5 · English 19.5">Mathematics 18.5 · Computer Science 19.5 · English 19.5</div>
+        <h3 class="t" data-en="General High School Diploma" data-gr="Απολυτήριο Γενικού Λυκείου">General High School Diploma</h3>
+        <div class="inst t" data-en="1st General Lyceum of Preveza — STEM" data-gr="1ο Γενικό Λύκειο Πρέβεζας — Θετικών Επιστημών (STEM)">1st General Lyceum of Preveza — STEM</div>
+        <div class="note t" data-en="Mathematics 18.5 · Computer Science 19.5 · English 19.5" data-gr="Μαθηματικά 18,5 · Πληροφορική 19,5 · Αγγλικά 19,5">Mathematics 18.5 · Computer Science 19.5 · English 19.5</div>
         <span class="bdg">19.1/20 — Excellent</span>
       </div>
     </div>
     <div class="ti reveal fl">
       <div class="ty">Nov 2025</div>
       <div class="tc">
-        <h3 class="t" data-en="Military Service — Completed">Military Service — Completed</h3>
-        <div class="inst t" data-en="Hellenic Army — 625 M/P Unit, Ioannina">Hellenic Army — 625 M/P Unit, Ioannina</div>
-        <div class="note t" data-en="No pending military obligations">No pending military obligations</div>
-        <span class="bdg t" data-en="Fully Discharged">Fully Discharged</span>
+        <h3 class="t" data-en="Military Service — Completed" data-gr="Στρατιωτική Θητεία — Ολοκληρωμένη">Military Service — Completed</h3>
+        <div class="inst t" data-en="Hellenic Army — 625 M/P Unit, Ioannina" data-gr="Ελληνικός Στρατός — 625 Μ/Π Μονάδα, Ιωάννινα">Hellenic Army — 625 M/P Unit, Ioannina</div>
+        <div class="note t" data-en="No pending military obligations" data-gr="Χωρίς εκκρεμείς στρατιωτικές υποχρεώσεις">No pending military obligations</div>
+        <span class="bdg t" data-en="Fully Discharged" data-gr="Πλήρως Απολυμένος">Fully Discharged</span>
       </div>
     </div>
   </div>
@@ -1929,34 +1956,34 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 <!-- EXPERIENCE -->
 <section id="experience" data-st-01="parallax" data-st-y="28" data-st-opacity="0.28">
 <div class="w">
-  <p class="ey section-overline">Professional Experience</p>
-  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Work ">Work </span><em>&amp;</em> <span class="t" data-en="Experience">Experience</span></h2>
+  <p class="ey section-overline t" data-en="Professional Experience" data-gr="Επαγγελματική Εμπειρία">Professional Experience</p>
+  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Work " data-gr="Εργασιακή ">Work </span><em>&amp;</em> <span class="t" data-en="Experience" data-gr="Εμπειρία">Experience</span></h2>
   <div class="tl">
     <div class="ti reveal fl">
-      <div class="ty">Summer Seasons 2021–2023</div>
+      <div class="ty t" data-en="Summer Seasons 2021–2023" data-gr="Καλοκαιρινές Περίοδοι 2021–2023">Summer Seasons 2021–2023</div>
       <div class="tc">
-        <h3>Waiter</h3>
-        <div class="inst">Iliovasilema — Alonaki Beach, Pantokratoras, Preveza</div>
-        <div class="note">Front-of-house service at a seaside restaurant during university summer breaks</div>
-        <span class="bdg">Seasonal</span>
+        <h3 class="t" data-en="Waiter" data-gr="Σερβιτόρος">Waiter</h3>
+        <div class="inst t" data-en="Iliovasilema — Alonaki Beach, Pantokratoras, Preveza" data-gr="Ηλιοβασίλεμα — Παραλία Αλωνάκι, Παντοκράτορας, Πρέβεζα">Iliovasilema — Alonaki Beach, Pantokratoras, Preveza</div>
+        <div class="note t" data-en="Front-of-house service at a seaside restaurant during university summer breaks" data-gr="Εξυπηρέτηση πελατών σε παραθαλάσσιο εστιατόριο κατά τις καλοκαιρινές διακοπές του πανεπιστημίου">Front-of-house service at a seaside restaurant during university summer breaks</div>
+        <span class="bdg t" data-en="Seasonal" data-gr="Εποχιακή">Seasonal</span>
       </div>
     </div>
 	<div class="ti reveal fl">
-      <div class="ty">Summer Season 2024</div>
+      <div class="ty t" data-en="Summer Season 2024" data-gr="Καλοκαιρινή Περίοδος 2024">Summer Season 2024</div>
       <div class="tc">
-        <h3>Bar Assistant</h3>
-        <div class="inst">Alila Tales &amp; Spirits — Preveza</div>
-        <div class="note">Supported bar operations during university summer breaks</div>
-        <span class="bdg">Seasonal</span>
+        <h3 class="t" data-en="Bar Assistant" data-gr="Βοηθός Μπαρ">Bar Assistant</h3>
+        <div class="inst t" data-en="Alila Tales &amp; Spirits — Preveza" data-gr="Alila Tales &amp; Spirits — Πρέβεζα">Alila Tales &amp; Spirits — Preveza</div>
+        <div class="note t" data-en="Supported bar operations during university summer breaks" data-gr="Υποστήριξη λειτουργίας μπαρ κατά τις καλοκαιρινές διακοπές του πανεπιστημίου">Supported bar operations during university summer breaks</div>
+        <span class="bdg t" data-en="Seasonal" data-gr="Εποχιακή">Seasonal</span>
       </div>
     </div>
     <div class="ti reveal fl">
-      <div class="ty">4–5 Months 2024-2025</div>
+      <div class="ty t" data-en="4–5 Months 2024-2025" data-gr="4–5 Μήνες 2024-2025">4–5 Months 2024-2025</div>
       <div class="tc">
-        <h3>Waiter</h3>
-        <div class="inst">Vento Gelateria Pasticceria — Preveza</div>
-        <div class="note">Front-of-house service at a gelateria and pastry shop during university studies</div>
-        <span class="bdg">Seasonal</span>
+        <h3 class="t" data-en="Waiter" data-gr="Σερβιτόρος">Waiter</h3>
+        <div class="inst t" data-en="Vento Gelateria Pasticceria — Preveza" data-gr="Vento Gelateria Pasticceria — Πρέβεζα">Vento Gelateria Pasticceria — Preveza</div>
+        <div class="note t" data-en="Front-of-house service at a gelateria and pastry shop during university studies" data-gr="Εξυπηρέτηση πελατών σε ζαχαροπλαστείο-παγωτατζίδικο κατά τις σπουδές στο πανεπιστήμιο">Front-of-house service at a gelateria and pastry shop during university studies</div>
+        <span class="bdg t" data-en="Seasonal" data-gr="Εποχιακή">Seasonal</span>
       </div>
     </div>
   </div>
@@ -1967,15 +1994,15 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
 <section id="certifications" data-st-01="reveal" data-st-y="200" data-st-opacity="0.35">
 <div class="decor-glow decor-glow--certifications" data-parallax-speed="-0.09" aria-hidden="true"></div>
 <div class="w">
-  <p class="ey section-overline">Qualifications</p>
-  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Certifications ">Certifications </span><em>&amp;</em> <span class="t" data-en="Qualifications">Qualifications</span></h2>
+  <p class="ey section-overline t" data-en="Qualifications" data-gr="Προσόντα">Qualifications</p>
+  <h2 class="sec-t reveal section-heading"><span class="t" data-en="Certifications " data-gr="Πιστοποιητικά ">Certifications </span><em>&amp;</em> <span class="t" data-en="Qualifications" data-gr="Προσόντα">Qualifications</span></h2>
   <div class="cert-grid compact-cert-grid">
-    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag">Education</div><div class="cn">General High School Diploma</div><div class="cd">1st General High School of Preveza</div><div class="cy">June 2020 · 19.1/20</div></div></article>
-    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag">Language</div><div class="cn">English C2 — NOCN Level 3</div><div class="cd">NOCN Group (Ofqual)</div><div class="cy">January 2022 · Distinction</div></div></article>
-    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag">Language</div><div class="cn">German A1 Certificate</div><div class="cd">Ministry of Education, Greece</div><div class="cy">August 2017 · A1</div></div></article>
-    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag">Official</div><div class="cn">Military Service Certificate</div><div class="cd">Hellenic Army, Epirus</div><div class="cy">November 2025 · Completed</div></div></article>
-    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag">Certification</div><div class="cn">Java Basic Certificate</div><div class="cd">HackerRank</div><div class="cy">June 2026 · Basic</div></div></article>
-    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag">Education</div><div class="cn">University Graduation Certificate</div><div class="cd">University of Western Macedonia — Kastoria</div><div class="cy">July 2026 · 6.61/10</div></div></article>
+    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag t" data-en="Education" data-gr="Εκπαίδευση">Education</div><div class="cn t" data-en="General High School Diploma" data-gr="Απολυτήριο Γενικού Λυκείου">General High School Diploma</div><div class="cd t" data-en="1st General High School of Preveza" data-gr="1ο Γενικό Λύκειο Πρέβεζας">1st General High School of Preveza</div><div class="cy t" data-en="June 2020 · 19.1/20" data-gr="Ιούνιος 2020 · 19,1/20">June 2020 · 19.1/20</div></div></article>
+    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag t" data-en="Language" data-gr="Γλώσσα">Language</div><div class="cn t" data-en="English C2 — NOCN Level 3" data-gr="Αγγλικά C2 — NOCN Level 3">English C2 — NOCN Level 3</div><div class="cd">NOCN Group (Ofqual)</div><div class="cy t" data-en="January 2022 · Distinction" data-gr="Ιανουάριος 2022 · Άριστα">January 2022 · Distinction</div></div></article>
+    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag t" data-en="Language" data-gr="Γλώσσα">Language</div><div class="cn t" data-en="German A1 Certificate" data-gr="Πιστοποιητικό Γερμανικών A1">German A1 Certificate</div><div class="cd t" data-en="Ministry of Education, Greece" data-gr="Υπουργείο Παιδείας, Ελλάδα">Ministry of Education, Greece</div><div class="cy t" data-en="August 2017 · A1" data-gr="Αύγουστος 2017 · A1">August 2017 · A1</div></div></article>
+    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag t" data-en="Official" data-gr="Επίσημο">Official</div><div class="cn t" data-en="Military Service Certificate" data-gr="Πιστοποιητικό Στρατιωτικής Θητείας">Military Service Certificate</div><div class="cd t" data-en="Hellenic Army, Epirus" data-gr="Ελληνικός Στρατός, Ήπειρος">Hellenic Army, Epirus</div><div class="cy t" data-en="November 2025 · Completed" data-gr="Νοέμβριος 2025 · Ολοκληρώθηκε">November 2025 · Completed</div></div></article>
+    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag t" data-en="Certification" data-gr="Πιστοποίηση">Certification</div><div class="cn t" data-en="Java Basic Certificate" data-gr="Πιστοποιητικό Java Basic">Java Basic Certificate</div><div class="cd">HackerRank</div><div class="cy t" data-en="June 2026 · Basic" data-gr="Ιούνιος 2026 · Βασικό">June 2026 · Basic</div></div></article>
+    <article class="ccard reveal compact-cert-card"><div class="cb"><div class="ctag t" data-en="Education" data-gr="Εκπαίδευση">Education</div><div class="cn t" data-en="University Graduation Certificate" data-gr="Πιστοποιητικό Αποφοίτησης Πανεπιστημίου">University Graduation Certificate</div><div class="cd t" data-en="University of Western Macedonia — Kastoria" data-gr="Πανεπιστήμιο Δυτικής Μακεδονίας — Καστοριά">University of Western Macedonia — Kastoria</div><div class="cy t" data-en="July 2026 · 6.61/10" data-gr="Ιούλιος 2026 · 6,61/10">July 2026 · 6.61/10</div></div></article>
   </div>
 </div>
 </section>
@@ -1987,40 +2014,40 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
   <img class="contact-bg-img" alt="" loading="lazy" decoding="async" src="assets/media/contact/contact-bg.jpg">
   <div class="contact-grid">
     <div class="contact-primary">
-      <p class="ey section-overline">Start a Conversation</p>
-      <h2 class="sec-t reveal section-heading" style="margin-bottom:24px"><span class="t" data-en="Let's ">Let's </span><em class="t" data-en="Connect">Connect</em></h2>
+      <p class="ey section-overline t" data-en="Start a Conversation" data-gr="Ξεκινήστε μια Συζήτηση">Start a Conversation</p>
+      <h2 class="sec-t reveal section-heading" style="margin-bottom:24px"><span class="t" data-en="Let's " data-gr="Ας ">Let's </span><em class="t" data-en="Connect" data-gr="Επικοινωνήσουμε">Connect</em></h2>
       <div class="avail reveal">
         <span class="dot"></span>
-        <span class="t" data-en="Open to Work">Open to Work</span>
+        <span class="t" data-en="Open to Work" data-gr="Διαθέσιμος για Εργασία">Open to Work</span>
       </div>
       <div class="contact-info-stack reveal">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=apostolos.peiniris@gmail.com" target="_blank" rel="noopener noreferrer" class="ci">
           <div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
-          <div><div class="ci-lb t" data-en="Email">Email</div><div class="ci-vl">apostolos.peiniris@gmail.com</div></div>
+          <div><div class="ci-lb t" data-en="Email" data-gr="Email">Email</div><div class="ci-vl">apostolos.peiniris@gmail.com</div></div>
         </a>
         <a href="tel:+306947889505" class="ci">
           <div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 1.5h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.06a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <div><div class="ci-lb t" data-en="Phone">Phone</div><div class="ci-vl">+30 694 788 9505</div></div>
+          <div><div class="ci-lb t" data-en="Phone" data-gr="Τηλέφωνο">Phone</div><div class="ci-vl">+30 694 788 9505</div></div>
         </a>
         <div class="ci">
           <div class="ci-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div><div class="ci-lb t" data-en="Location">Location</div><div class="ci-vl t" data-en="Preveza, Greece 48100">Preveza, Greece 48100</div></div>
+          <div><div class="ci-lb t" data-en="Location" data-gr="Τοποθεσία">Location</div><div class="ci-vl t" data-en="Preveza, Greece 48100" data-gr="Πρέβεζα, Ελλάδα 48100">Preveza, Greece 48100</div></div>
         </div>
       </div>
     </div>
     <div class="contact-form-column"><form class="connect-form reveal" id="connect-form" aria-label="Send Apostolos a message">
-        <div class="connect-form-head"><span>Message</span><small>Opens your email composer</small></div>
+        <div class="connect-form-head"><span class="t" data-en="Message" data-gr="Μήνυμα">Message</span><small class="t" data-en="Opens your email composer" data-gr="Ανοίγει το πρόγραμμα email σας">Opens your email composer</small></div>
         <div class="connect-form-grid">
-          <label class="cf-field"><span>Your name</span><input name="name" autocomplete="name" placeholder="How should I address you?" required></label>
-          <label class="cf-field"><span>Email address</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
+          <label class="cf-field"><span class="t" data-en="Your name" data-gr="Το όνομά σας">Your name</span><input name="name" autocomplete="name" placeholder="How should I address you?" data-ph-en="How should I address you?" data-ph-gr="Πώς να σας απευθύνομαι;" required></label>
+          <label class="cf-field"><span class="t" data-en="Email address" data-gr="Διεύθυνση email">Email address</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
         </div>
-        <label class="cf-field cf-field--message"><span>What can I help with?</span><textarea name="message" rows="4" placeholder="Tell me a little about the project, role, or idea." required></textarea></label>
+        <label class="cf-field cf-field--message"><span class="t" data-en="What can I help with?" data-gr="Πώς μπορώ να βοηθήσω;">What can I help with?</span><textarea name="message" rows="4" placeholder="Tell me a little about the project, role, or idea." data-ph-en="Tell me a little about the project, role, or idea." data-ph-gr="Πείτε μου λίγα λόγια για το έργο, τη θέση, ή την ιδέα." required></textarea></label>
         <div class="message-chips" aria-label="Quick message starters">
-          <button type="button" class="message-chip" data-message="I would like to discuss a job opportunity.">Job opportunity</button>
-          <button type="button" class="message-chip" data-message="I would like to discuss a project.">Project</button>
-          <button type="button" class="message-chip" data-message="Just saying hi — I would love to connect.">Just saying hi</button>
+          <button type="button" class="message-chip t" data-en="Job opportunity" data-gr="Ευκαιρία εργασίας" data-message="I would like to discuss a job opportunity.">Job opportunity</button>
+          <button type="button" class="message-chip t" data-en="Project" data-gr="Έργο" data-message="I would like to discuss a project.">Project</button>
+          <button type="button" class="message-chip t" data-en="Just saying hi" data-gr="Απλά ένα γεια" data-message="Just saying hi — I would love to connect.">Just saying hi</button>
         </div>
-        <button class="connect-submit" type="submit"><span>Start a conversation</span><i aria-hidden="true">↗</i></button>
+        <button class="connect-submit" type="submit"><span class="t" data-en="Start a conversation" data-gr="Ξεκινήστε μια συζήτηση">Start a conversation</span><i aria-hidden="true">↗</i></button>
       </form>
     </div>
   </div>
@@ -2032,7 +2059,7 @@ body.ambient-ready #ambient-video-layer { opacity:.46; }
     <span>&copy; <span id="ft-year">2026</span> Apostolos Peiniris</span>
   </div>
   
-<a class="footer-top" href="#hero">Back to top <span aria-hidden="true">↑</span></a>
+<a class="footer-top" href="#hero"><span class="t" data-en="Back to top" data-gr="Επιστροφή στην κορυφή">Back to top</span> <span aria-hidden="true">↑</span></a>
 </footer>
 <script>try{document.getElementById('ft-year').textContent=new Date().getFullYear();}catch(e){}</script>
 
@@ -2135,6 +2162,44 @@ window.addEventListener('scroll',()=>{
     _scrollTick=false;
   });
 },{passive:true});
+
+// ── LANGUAGE TOGGLE (EN / GR) ────────────────────────────────────────────────
+(function(){
+  var STORAGE_KEY = 'site-lang';
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+  var lang = (saved === 'gr' || saved === 'en') ? saved : 'en';
+
+  function applyLang(next){
+    lang = next;
+    document.documentElement.lang = next === 'gr' ? 'el' : 'en';
+    document.querySelectorAll('.t[data-en]').forEach(function(el){
+      var val = next === 'gr' ? (el.getAttribute('data-gr') || el.getAttribute('data-en')) : el.getAttribute('data-en');
+      el.textContent = val;
+    });
+    document.querySelectorAll('[data-ph-en]').forEach(function(el){
+      var val = next === 'gr' ? (el.getAttribute('data-ph-gr') || el.getAttribute('data-ph-en')) : el.getAttribute('data-ph-en');
+      el.setAttribute('placeholder', val);
+    });
+    document.querySelectorAll('.lang-btn').forEach(function(btn){
+      var active = btn.getAttribute('data-lang') === next;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+    var ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (ogLocale) ogLocale.setAttribute('content', next === 'gr' ? 'el_GR' : 'en_US');
+    try { localStorage.setItem(STORAGE_KEY, next); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var next = btn.getAttribute('data-lang');
+      if (next !== lang) applyLang(next);
+    });
+  });
+
+  applyLang(lang);
+})();
 
 // ── REVEAL ────────────────────────────────────────────────────────────────
 const obs=('IntersectionObserver' in window) ? new IntersectionObserver(entries=>{

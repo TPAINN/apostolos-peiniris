@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://apostolos-peiniris.vercel.app/sitemap.xml
