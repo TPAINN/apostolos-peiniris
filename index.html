@@ -711,6 +711,21 @@ main, body { position: relative; }
 section { position: relative; z-index: 1; overflow: hidden; }
 section[data-st-01]:not([data-st-01="pin"]) { will-change: transform; }
 
+/* Reveal handoff seam fix: the section a "reveal" section slides out from under
+   (#experience -> #certifications, #certifications -> #contact) ends in a hard
+   rectangular cutoff as it scrolls away, exposing the sticky section beneath it.
+   Mask its own bottom edge to transparent so it dissolves into whatever's
+   already sitting behind it instead of cutting off sharply. */
+#experience, #certifications {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 150px), transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 calc(100% - 150px), transparent 100%);
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
+}
+@media (max-width:900px) {
+  #experience, #certifications { -webkit-mask-image:none; mask-image:none; }
+}
+
 /* ── ATMOSPHERIC SECTION LIGHTING & AMBIENT BLOOMS ── */
 section::before {
   content: '';
