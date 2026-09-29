@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Case Study: Smart Grocery Hub (Καλαθάκι) — Apostolos Peiniris</title>
-<meta name="description" content="How I built Καλαθάκι — a full-stack PWA + Android app comparing live prices across 8 Greek supermarkets: Puppeteer scrapers, real-time shared carts, AI meal planning, Stripe.">
+<meta name="description" content="How I built Καλαθάκι — a full-stack PWA + Android app comparing live prices across 8 Greek supermarkets: Puppeteer scrapers, real-time shared carts, AI meal planning.">
 <link rel="icon" href="/favicon.png" type="image/png">
 <link rel="canonical" href="https://apostolos-peiniris.vercel.app/case-study/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Case Study: Smart Grocery Hub — Apostolos Peiniris">
-<meta property="og:description" content="Full-stack PWA + Android price comparison across 8 Greek supermarkets — Puppeteer scrapers, real-time carts, AI meal planner, Stripe.">
+<meta property="og:description" content="Full-stack PWA + Android price comparison across 8 Greek supermarkets — Puppeteer scrapers, real-time carts, AI meal planner.">
 <meta property="og:url" content="https://apostolos-peiniris.vercel.app/case-study/">
 <meta property="og:image" content="https://apostolos-peiniris.vercel.app/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@ footer h2{margin-bottom:34px}
 <div class="wrap hero">
   <div class="eyebrow reveal">Case Study</div>
   <h1 class="reveal"><span class="vt-title">Smart Grocery Hub</span> <em>Καλαθάκι</em></h1>
-  <p class="lede reveal">A full-stack PWA and Android app that compares <b>live prices across 8 Greek supermarket chains</b> — with an AI meal planner, barcode scanning, real-time shared carts and Stripe subscriptions.</p>
+  <p class="lede reveal">A full-stack PWA and Android app that compares <b>live prices across 8 Greek supermarket chains</b> — with an AI meal planner, barcode scanning, and real-time shared carts. Free for everyone.</p>
   <div class="meta reveal">
     <span class="chip">Solo project</span>
     <span class="chip">PWA + Android</span>
@@ -253,7 +253,7 @@ footer h2{margin-bottom:34px}
   <div class="cluster reveal">
     <div class="device p-l"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-recipes.jpg" alt="Καλαθάκι recipes tab — recipe of the day and cards with calories and macros" fetchpriority="high" width="393" height="852"></div></div>
     <div class="device p-c"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-home.jpg" alt="Καλαθάκι home dashboard — AI meal planner, deals and daily price drops" fetchpriority="high" width="393" height="852"></div></div>
-    <div class="device p-r"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-premium.jpg" alt="Καλαθάκι Premium subscription tiers, powered by Stripe" fetchpriority="high" width="393" height="852"></div></div>
+    <div class="device p-r"><i class="a"></i><i class="vu"></i><i class="vd"></i><i class="pw"></i><div class="screen"><span class="island"></span><img src="app-welcome.jpg" alt="Καλαθάκι welcome screen" fetchpriority="high" width="393" height="852"></div></div>
   </div>
 </div>
 
@@ -263,7 +263,7 @@ footer h2{margin-bottom:34px}
       <div class="metric"><div class="n">8</div><div class="l">Supermarket chains</div></div>
       <div class="metric"><div class="n">Live</div><div class="l">Scraped prices</div></div>
       <div class="metric"><div class="n">AI</div><div class="l">Meal planning</div></div>
-      <div class="metric"><div class="n">Stripe</div><div class="l">Subscriptions</div></div>
+      <div class="metric"><div class="n">Free</div><div class="l">No paywall</div></div>
     </div>
   </div>
 </section>
@@ -294,7 +294,7 @@ footer h2{margin-bottom:34px}
       <div><span class="d">05</span>Barcode scanner with Nutri-Score</div>
       <div><span class="d">11</span>Native Android build via Capacitor</div>
       <div><span class="d">06</span>Recipes with ingredients straight to list</div>
-      <div><span class="d">12</span>Premium subscriptions with Stripe</div>
+      <div><span class="d">12</span>Free for everyone, no paywall</div>
     </div>
   </div>
 </section>
@@ -348,7 +348,7 @@ footer h2{margin-bottom:34px}
       <div class="card reveal">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <h3>Maps &amp; payments</h3>
-        <p>Leaflet + OSRM + Overpass for nearby stores and optimal routes with zero Google fees; Stripe Checkout for Premium with a 14-day free trial.</p>
+        <p>Leaflet + OSRM + Overpass for nearby stores and optimal routes with zero Google fees.</p>
       </div>
     </div>
   </div>
@@ -361,7 +361,7 @@ footer h2{margin-bottom:34px}
     <div class="prob reveal"><b>Scraping 8 different storefronts, reliably.</b><p>Every chain has its own markup, pagination and bot detection. The scrapers run on Puppeteer with anti-bot countermeasures and are monitored so that a silent HTML change in one store doesn't quietly corrupt prices.</p></div>
     <div class="prob reveal"><b>Matching the same product across chains.</b><p>"Γάλα 3.5% 1L" is spelled eight different ways. Matching combines normalized names, package sizes and barcodes so the comparison is honest — a wrong match is worse than no match.</p></div>
     <div class="prob reveal"><b>Real-time collaboration that survives mobile networks.</b><p>Shared carts must reconcile edits from multiple phones on flaky connections; Socket.IO events are idempotent and the list state re-syncs on every reconnect.</p></div>
-    <div class="prob reveal"><b>Keeping the free tier free.</b><p>Maps use OSRM/Overpass instead of paid APIs, hosting fits Vercel + Render free plans, and Premium (Stripe) covers what actually costs money — the AI features.</p></div>
+    <div class="prob reveal"><b>Keeping the free tier free.</b><p>Maps use OSRM/Overpass instead of paid APIs, hosting fits Vercel + Render free plans, and AI calls are cached and rate-limited so the whole app stays free.</p></div>
   </div>
 </section>
 
@@ -369,7 +369,7 @@ footer h2{margin-bottom:34px}
   <div class="wrap">
     <div class="kicker reveal">Stack</div>
     <div class="stack reveal">
-      <span class="stk">React 19</span><span class="stk">Vite</span><span class="stk">Capacitor</span><span class="stk">Workbox PWA</span><span class="stk">Framer Motion</span><span class="stk">Express 5</span><span class="stk">MongoDB</span><span class="stk">Puppeteer</span><span class="stk">Socket.IO</span><span class="stk">Stripe</span><span class="stk">Leaflet</span><span class="stk">OSRM</span><span class="stk">Claude AI</span>
+      <span class="stk">React 19</span><span class="stk">Vite</span><span class="stk">Capacitor</span><span class="stk">Workbox PWA</span><span class="stk">Framer Motion</span><span class="stk">Express 5</span><span class="stk">MongoDB</span><span class="stk">Puppeteer</span><span class="stk">Socket.IO</span><span class="stk">Leaflet</span><span class="stk">OSRM</span><span class="stk">Claude AI</span>
     </div>
   </div>
 </section>
