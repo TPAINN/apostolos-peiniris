@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Apostolos Peiniris">
+<meta name="description" content="Curriculum Vitae — Apostolos Peiniris, Full-Stack Developer">
+<title>Apostolos Peiniris — Full-Stack Developer CV</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 210mm; }
+  body {
+    font-family: "Segoe UI", -apple-system, Roboto, Arial, sans-serif;
+    color: #241f19; background: #fdfcf9;
+    font-size: 9.2pt; line-height: 1.42;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  .sheet {
+    width: 210mm; min-height: 297mm;
+    padding: 13mm 16mm 11mm;
+    page-break-after: always;
+    position: relative;
+  }
+  .sheet:last-child { page-break-after: auto; }
+  .accent-top { position: absolute; top: 0; left: 0; right: 0; height: 3.2mm;
+    background: linear-gradient(90deg, #8a4f22, #c17a3f 55%, #e0a86b); }
+
+  /* ---------- Header ---------- */
+  .head { display: flex; align-items: center; gap: 7mm; margin: 2mm 0 5mm; }
+  .head img { width: 25mm; height: 25mm; border-radius: 50%; object-fit: cover;
+    border: 1mm solid #eadbc4; }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-size: 25.5pt; font-weight: 700;
+    letter-spacing: .3px; color: #1f1a14; line-height: 1.05; }
+  .role { color: #b4682c; font-size: 10.5pt; font-weight: 700; letter-spacing: 2.6px;
+    text-transform: uppercase; margin: 1.6mm 0 2.2mm; }
+  .contact { font-size: 8.6pt; color: #574e42; line-height: 1.7; }
+  .contact a { color: #a05a24; }
+  .contact .sep { color: #d3b992; margin: 0 1.6mm; }
+
+  .lead {
+    background: #f6f0e6; border-left: 1.1mm solid #c17a3f;
+    padding: 2.6mm 4mm; font-size: 9.4pt; color: #3a332a; margin-bottom: 5.5mm;
+    text-align: justify;
+  }
+
+  /* ---------- Sections ---------- */
+  h2 { font-size: 9pt; font-weight: 700; letter-spacing: 2.2px; text-transform: uppercase;
+    color: #b4682c; padding-bottom: 1.4mm; margin: 0 0 3.2mm;
+    border-bottom: .3mm solid #e8ddcb; }
+  section { margin-bottom: 5.5mm; }
+
+  /* ---------- Skills ---------- */
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2mm 8mm; }
+  .sk { display: flex; gap: 2.5mm; align-items: baseline; }
+  .sk b { flex: 0 0 33mm; font-size: 7.6pt; letter-spacing: 1px; text-transform: uppercase;
+    color: #8a5a28; font-weight: 700; }
+  .sk span { color: #3a332a; }
+
+  /* ---------- Projects ---------- */
+  .proj { margin-bottom: 3.6mm; }
+  .proj .row { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .proj .nm { font-weight: 700; font-size: 10.6pt; color: #1f1a14; }
+  .proj .nm .sub { font-weight: 400; color: #7c7264; font-size: 9pt; }
+  .proj .links { flex-shrink: 0; font-family: Consolas, "Courier New", monospace;
+    font-size: 7.6pt; letter-spacing: .4px; color: #a05a24; }
+  .proj .links a { color: #a05a24; }
+  .proj .links .lsep { color: #d3b992; margin: 0 1.2mm; }
+  .proj .ds { color: #3a332a; margin-top: .8mm; }
+  .proj .tech { font-family: Consolas, "Courier New", monospace; color: #998d7c;
+    font-size: 7.8pt; margin-top: .7mm; }
+
+  .mini { display: flex; justify-content: space-between; gap: 4mm; margin-bottom: 1.9mm; }
+  .mini .l { flex: 1; }
+  .mini b { font-size: 9.4pt; color: #1f1a14; }
+  .mini .d { color: #6f6558; }
+  .mini .r { flex-shrink: 0; text-align: right; font-family: Consolas, "Courier New", monospace;
+    font-size: 7.6pt; color: #a05a24; }
+  .mini .r a { color: #a05a24; }
+
+  /* ---------- Timeline (experience / education) ---------- */
+  .trow { display: flex; gap: 5mm; margin-bottom: 2.8mm; }
+  .trow .when { width: 30mm; flex-shrink: 0; color: #a05a24; font-weight: 700;
+    font-size: 8.6pt; padding-top: .5mm; }
+  .trow .tt { font-weight: 700; font-size: 10pt; color: #1f1a14; }
+  .trow .org { color: #574e42; margin-top: .3mm; }
+  .trow .ds { color: #6f6558; font-size: 8.8pt; margin-top: .5mm; }
+  .trow ul { margin-top: .8mm; padding-left: 4mm; color: #3a332a; }
+  .trow li { margin-bottom: .5mm; }
+
+  /* ---------- Certs / languages ---------- */
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .cert { margin-bottom: 2mm; }
+  .cert b { color: #1f1a14; font-size: 9.3pt; }
+  .cert .m { color: #6f6558; font-size: 8.6pt; }
+  .lang { display: flex; justify-content: space-between; margin-bottom: 1.6mm; }
+  .pill { background: #f0e2ce; color: #7a4a1e; font-size: 7.6pt; font-weight: 700;
+    border-radius: 2mm; padding: .5mm 2.2mm; white-space: nowrap; }
+
+  .foot { position: absolute; bottom: 8mm; left: 16mm; right: 16mm;
+    border-top: .3mm solid #e8ddcb; padding-top: 2mm; font-size: 8pt; color: #8a8073; }
+  .foot a { color: #a05a24; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="sheet">
+  <div class="accent-top"></div>
+
+  <div class="head">
+    <img src="img0.jpg" alt="Apostolos Peiniris">
+    <div>
+      <h1>Apostolos Peiniris</h1>
+      <div class="role">Full-Stack Developer</div>
+      <div class="contact">
+        <a href="mailto:apostolos.peiniris@gmail.com">apostolos.peiniris@gmail.com</a><span class="sep">·</span>+30 694 788 9505<span class="sep">·</span>Preveza, Greece<br>
+        <a href="https://github.com/TPAINN">github.com/TPAINN</a><span class="sep">·</span><a href="https://apostolos-peiniris.vercel.app">apostolos-peiniris.vercel.app</a><span class="sep">·</span><a href="https://www.linkedin.com/in/apostolos-peiniris-a02a961a5/">linkedin.com/in/apostolos-peiniris-a02a961a5</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="lead">
+    Full-stack developer with a B.Sc. in Computer Science, building web and mobile applications
+    with React on the web, Kotlin and Jetpack Compose on Android, and Node.js / Express and
+    Java / Spring Boot on the back end, with PostgreSQL and MongoDB. Shipped an AI nutrition
+    scanner on Android, a real-time grocery price-comparison PWA and Android app, and an
+    Android sound-library app with its own REST API. Available immediately for remote or
+    on-site roles.
+  </div>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills">
+      <div class="sk"><b>Languages</b><span>Java, Kotlin, JavaScript, TypeScript, SQL</span></div>
+      <div class="sk"><b>Front-End</b><span>React, Vite, PWA, HTML5, CSS3</span></div>
+      <div class="sk"><b>Mobile</b><span>Jetpack Compose, Capacitor</span></div>
+      <div class="sk"><b>Back-End</b><span>Node.js, Express, Spring Boot, Hibernate / JPA</span></div>
+      <div class="sk"><b>Databases</b><span>PostgreSQL, MongoDB, Supabase</span></div>
+      <div class="sk"><b>AI</b><span>Gemini and Claude APIs</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected Projects</h2>
+
+    <div class="proj">
+      <div class="row">
+        <span class="nm">Nufo — AI Nutrition Scanner</span>
+        <span class="links"><a href="https://nufo.vercel.app">LIVE</a><span class="lsep">·</span><a href="https://github.com/TPAINN/nufo">CODE</a></span>
+      </div>
+      <div class="ds">Nutrition scanner: photograph a plate and a Gemini vision model names every food with its grams, with calories verified against USDA data; scan a barcode for Nutri-Score, NOVA and additives. Label photos fill in missing product data. Released on Android with in-app updates.</div>
+      <div class="tech">Kotlin · Jetpack Compose · Gemini AI · Vercel Functions · USDA FNDDS · Open Food Facts</div>
+    </div>
+
+    <div class="proj">
+      <div class="row">
+        <span class="nm">Smart Grocery Hub — Kalathaki</span>
+        <span class="links"><a href="https://kalathaki.vercel.app">LIVE</a></span>
+      </div>
+      <div class="ds">Full-stack PWA and Android app for real-time grocery price comparison across
+        8 Greek supermarkets, with an AI-powered meal planner, barcode scanning and live shared
+        carts — product prices collected through an automated Puppeteer pipeline.</div>
+      <div class="tech">React 19 · Capacitor · Express · MongoDB · Puppeteer · Socket.IO</div>
+    </div>
+
+    <div class="proj">
+      <div class="row">
+        <span class="nm">RingVault</span>
+        <span class="links"><a href="https://ringvault.vercel.app">LIVE</a><span class="lsep">·</span><a href="https://github.com/TPAINN/ringvault">CODE</a></span>
+      </div>
+      <div class="ds">Android app offering curated, legally free (CC0 / CC-BY) ringtones, notification
+        sounds and alarms with one-tap setup via MediaStore. An automated weekly ingest pipeline
+        (Freesound, Pixabay) keeps the library fresh, served by a Node.js / Express API on MongoDB.</div>
+      <div class="tech">Kotlin · Jetpack Compose · ExoPlayer · Node.js · Express · MongoDB</div>
+    </div>
+
+    <div class="proj">
+      <div class="row">
+        <span class="nm">MindFeed</span>
+        <span class="links"><a href="https://mindfeed-tpainn.vercel.app">LIVE</a><span class="lsep">·</span><a href="https://github.com/TPAINN/mindfeed">CODE</a></span>
+      </div>
+      <div class="ds">Progressive web app that counters doom-scrolling with daily, science-backed
+        knowledge cards in a calm, distraction-free reading experience.</div>
+      <div class="tech">React · Vite · PWA · Node.js · MongoDB · Claude API</div>
+    </div>
+
+
+    <div class="proj">
+      <div class="row">
+        <span class="nm">Shft — Gym Planner</span>
+        <span class="links"><a href="https://shftapp.vercel.app">LIVE</a></span>
+      </div>
+      <div class="ds">Android gym planner and workout tracker that turns scattered sessions into a repeatable
+        system: build a plan, learn the lifts, log sets, review and track progress.</div>
+      <div class="tech">React · Capacitor · Supabase · GSAP</div>
+    </div>
+  </section>
+
+  <div class="foot">
+    Full CV, live projects and certificates:
+    <a href="https://apostolos-peiniris.vercel.app">apostolos-peiniris.vercel.app</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/TPAINN">github.com/TPAINN</a>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="sheet">
+  <div class="accent-top"></div>
+
+  <section style="margin-top: 4mm;">
+    <h2>Additional Projects</h2>
+    <div class="mini">
+      <div class="l"><b>Zenith Strength System</b> — <span class="d">gym management platform with members,
+        classes, CRM, payroll and POS (Spring Boot, Hibernate, PostgreSQL, React).</span></div>
+      <div class="r">Private repository</div>
+    </div>
+    <div class="mini">
+      <div class="l"><b>Aurora Player</b> — <span class="d">web music player with word-level karaoke lyrics
+        and beat-reactive visuals.</span></div>
+      <div class="r"><a href="https://aurora-player-tpainn.vercel.app">aurora-player-tpainn.vercel.app</a><br><a href="https://github.com/TPAINN/aurora-player">github.com/TPAINN/aurora-player</a></div>
+    </div>
+    <div class="mini">
+      <div class="l"><b>Portfolio Website</b> — <span class="d">single-file static site with custom cursor,
+        scroll-driven animation and a PDF certificate viewer.</span></div>
+      <div class="r"><a href="https://apostolos-peiniris.vercel.app">apostolos-peiniris.vercel.app</a><br><a href="https://github.com/TPAINN/apostolos-peiniris">github.com/TPAINN/apostolos-peiniris</a></div>
+    </div>
+    <div class="mini">
+      <div class="l"><b>Vortex — Marketing Site</b> — <span class="d">animated pre-launch site with email
+        waitlist for an upcoming Android app.</span></div>
+      <div class="r"><a href="https://vortex-site-pi.vercel.app">vortex-site-pi.vercel.app</a><br><a href="https://github.com/TPAINN/vortex-site">github.com/TPAINN/vortex-site</a></div>
+    </div>
+    <div class="mini">
+      <div class="l"><b>Weather Dashboard</b> — <span class="d">real-time weather with current conditions,
+        forecasts and location-based data.</span></div>
+      <div class="r"><a href="https://weather-app-tpainn.vercel.app">weather-app-tpainn.vercel.app</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Work Experience</h2>
+    <div class="trow">
+      <div class="when">2024 – 2025</div>
+      <div>
+        <div class="tt">Waiter</div>
+        <div class="org">Vento Gelateria Pasticceria — Preveza · 4–5 months</div>
+        <div class="ds">Front-of-house service at a gelateria and pastry shop.</div>
+      </div>
+    </div>
+    <div class="trow">
+      <div class="when">Summer 2024</div>
+      <div>
+        <div class="tt">Bar Assistant</div>
+        <div class="org">Alila Tales &amp; Spirits — Preveza</div>
+        <div class="ds">Supported bar operations during the peak summer season.</div>
+      </div>
+    </div>
+    <div class="trow">
+      <div class="when">2021 – 2023</div>
+      <div>
+        <div class="tt">Waiter</div>
+        <div class="org">Iliovasilema — Alonaki Beach, Pantokratoras, Preveza · summer seasons</div>
+        <div class="ds">Front-of-house restaurant service during peak summer seasons.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education &amp; Military Service</h2>
+    <div class="trow">
+      <div class="when">2020 – 2026</div>
+      <div>
+        <div class="tt">B.Sc. Computer Science (Informatics)</div>
+        <div class="org">University of Western Macedonia — Kastoria</div>
+        <div class="ds">Coursework: OOP &amp; Java, Data Structures, Algorithms, Databases (SQL / NoSQL),
+          Networks, Operating Systems, Software Engineering, AI, Web Development.
+          50 / 50 courses · 270 ECTS · Final grade 6.61 / 10 (Very Good).</div>
+      </div>
+    </div>
+    <div class="trow">
+      <div class="when">2025</div>
+      <div>
+        <div class="tt">Hellenic Army — Military Service Completed</div>
+        <div class="org">625 M/P Unit, Ioannina · Specialty: Infantry / Driver</div>
+        <div class="ds">Fully discharged, November 2025 — no pending obligations.</div>
+      </div>
+    </div>
+    <div class="trow">
+      <div class="when">2017 – 2020</div>
+      <div>
+        <div class="tt">General High School Diploma — STEM</div>
+        <div class="org">1st General Lyceum of Preveza</div>
+        <div class="ds">Grade 19.1 / 20 (Excellent) · Mathematics 18.5 · Computer Science 19.5 · English 19.5.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="duo">
+      <div>
+        <h2>Certifications</h2>
+        <div class="cert"><b>English C2 — NOCN Level 3</b><br><span class="m">NOCN Group (Ofqual) · January 2022 · Distinction</span></div>
+        <div class="cert"><b>Java (Basic) Certification</b><br><span class="m">HackerRank · June 2026</span></div>
+        <div class="cert"><b>German A1 — State Certificate</b><br><span class="m">August 2017</span></div>
+      </div>
+      <div>
+        <h2>Languages</h2>
+        <div class="lang"><span>Greek</span><span class="pill">Native</span></div>
+        <div class="lang"><span>English</span><span class="pill">C2 — Distinction</span></div>
+        <div class="lang"><span>German</span><span class="pill">A1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    Available immediately · Remote or on-site · Driving licence (B) ·
+    <a href="mailto:apostolos.peiniris@gmail.com">apostolos.peiniris@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://github.com/TPAINN">github.com/TPAINN</a>
+  </div>
+</div>
+
+</body>
+</html>
